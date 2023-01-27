@@ -13,7 +13,7 @@ namespace ShopStrumentiMusicali.Models
         public string SupplierName { get; set; }
 
         [Column(TypeName = "date")]
-        public DateOnly? TransactionDate { get; set; }
+        public DateTime? TransactionDate { get; set; }
 
         [Column(TypeName = "smallint")]
         [Range(0, 32000, ErrorMessage = "Invalid input for quantity")]
@@ -30,7 +30,7 @@ namespace ShopStrumentiMusicali.Models
 
         public ShopTransaction() { }
 
-        public ShopTransaction(string supplierName, DateOnly? transactionDate, int transactionQuantity, double transactionFee)
+        public ShopTransaction(string supplierName, DateTime? transactionDate, int transactionQuantity, double transactionFee)
         {
             SupplierName = supplierName;
             TransactionDate = transactionDate;
