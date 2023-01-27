@@ -20,7 +20,12 @@ namespace ShopStrumentiMusicali.Models
         [StringLength(300, ErrorMessage = "Image URL cannot be longer than 300 characters.")]
         public string ImageURL { get; set; }
 
-        //Fare le foreign key
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
+
+        public List<UserTransaction>? UserTransactions { get; set; }
+
+        public List<ShopTransaction>? ShopTransactions { get; set; }
 
         public Instrument() { }
 

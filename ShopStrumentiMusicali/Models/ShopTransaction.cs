@@ -23,6 +23,9 @@ namespace ShopStrumentiMusicali.Models
         [Range(0, 200000, ErrorMessage = "Invalid input for supplier's fee")]
         public double TransactionFee { get; set; }
 
+        public int InstrumentID { get; set; }
+        public Instrument Instrument { get; set; }
+
         //FKs
 
         public ShopTransaction() { }

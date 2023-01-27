@@ -17,7 +17,8 @@ namespace ShopStrumentiMusicali.Models
         [Range(0,32000, ErrorMessage = "Invalid input for quantity")]
         public int TransactionQuantity { get; set; }
 
-        //FKs
+        public int InstrumentID { get; set; }
+        public Instrument Instrument { get; set; }
 
         public UserTransaction() { }
 
