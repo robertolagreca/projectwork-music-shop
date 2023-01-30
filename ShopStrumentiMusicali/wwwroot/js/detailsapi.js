@@ -6,7 +6,7 @@ const id = window.location.href.substring(window.location.href.lastIndexOf('/') 
                 console.log('strumento visualizzato', instrument);
 
 
-                document.getElementById('NOME ID CONTAINER').innerHTML +=
+                document.getElementById('instrument_container').innerHTML +=
                     `
                         <div class="col-12 col-md-4 p-2">
                               <div class="card post h-100">
