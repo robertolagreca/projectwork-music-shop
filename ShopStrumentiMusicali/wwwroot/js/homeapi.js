@@ -5,7 +5,7 @@
 
 //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
 const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-axios.get("/api/NOME CONTROLLER API/" + id).then((res) => {
+axios.get("/api/InstrumentApi/" + id).then((res) => {
     let instrument = res.data;
     console.log('strumento visualizzato', instrument);
 
