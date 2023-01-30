@@ -43,10 +43,16 @@
 
 		<!--Da sistemare sicuro in base la categoria-->
 		<div class="mb-3 form-check">
-			<label>Prezzo:</label>
-			<input asp-for="Instrument.Category" type="text" class="form-control" />
+				<label>Categoria:</label>
+			<select asp-for="Instrument.Category" rows="10" class="d-block w-100">
+					<option value=""></option>
+				@foreach (Category category in Model.Category)
+				{
+						<option value="@category.Id">@category.CategoryName</option>
+				}
+				</select>
 			<span asp-validation-for="Instrument.Category" class="text-danger"></span>
-		</div>
+			</div>
 
 		<!--Da sistemare sicuro in base allo shop transaction-->
 		 <div class="mb-3 form-check">
