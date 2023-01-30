@@ -4,6 +4,10 @@
 <!-- Da aggiugnere layout-->
 <!-- Da inserire @@model lista di strumenti-->
 
+<div class="d-flex align-items-center">
+	<h1 class="text-danger">Aggiungere strumento</h1>
+</div>
+
 <div class="container">
 	<form asp-controller="Instrument" asp-action="Create" method="Post">
 		@Html.AntiForgeryToken()
