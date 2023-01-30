@@ -1,0 +1,22 @@
+﻿<!--@@page
+@@model ShopStrumentiMusicali.Views.Home.DetailsModel-->
+
+@using ShopStrumentiMusicali.Models;
+@model Instrument
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="instrument_container">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Collegamento a file all'API (file js) che restituisce i dettagli-->
+<script type="text/javascript" src="~/js/detailsapi.js"></script>

@@ -1,8 +1,51 @@
-﻿@{
+﻿<!-- @@{
     ViewData["Title"] = "Home Page";
+} -->
+
+@{
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<!--Carousel index-->
+
+<div class="container-fluid carousel-background pb-5">
+    <div class="row">
+        <div class="col"></div>
+        <div id="carouselExampleAutoplaying" class="carousel slide col my-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2500">
+                    <img src="https://www.informusic.it/wp-content/uploads/2020/10/miglior-violino.jpg" class="d-block w-100"
+                         alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://www.raiscuola.rai.it/dl/img/2021/03/24/1616586033732_1584444217498_fotoMusica2020.jpg"
+                         class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://spettacolo.com/media/catalog/category/arredamento-music-store-pannelli-dogato-bianco-SPETTACOLO-Shop-For-Store-min.jpg"
+                         class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
+
+<!--Verranno visualizzate le card attraverso l'API-->
+<div class="container-fluid">
+    loadInstrument();
+</div>
+
+<!--Richiamo a file JS-->
+<script type="text/javascript" src="~/js/homeapi.js"></script>
