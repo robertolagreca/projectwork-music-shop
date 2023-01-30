@@ -17,8 +17,9 @@ axios.get("/api/NOME CONTROLLER API/" + id).then((res) => {
                                     <img src="${instrument.imageUrl}" class="card-img-top" alt="strumento">
                                     <div class="card-body">
                                     <h5 class="card-title">${instrument.name}</h5>
-                                            <p class="card-text">${instrument.description}</p>
+                                            <!--<p class="card-text">${instrument.description}</p> -->
                                             <p class="card-text">${instrument.price}</p>
+                                           <!-- AGGIUNGERE BOTTONI -->
                                     </div>
                             </div>
                         </div>
