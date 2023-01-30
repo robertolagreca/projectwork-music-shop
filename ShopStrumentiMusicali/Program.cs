@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShopStrumentiMusicali.Database;
+using ShopStrumentiMusicali.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 //string connectionString = builder.Configuration.GetConnectionString("ParamusicContextConnection") ?? throw new InvalidOperationException("Connection string 'ParamusicContextConnection' not found.");
@@ -13,7 +14,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders().A
 
 //(options => options.SignIn.RequireConfirmedAccount = true)
 
-
+AddScoped();
 
 var app = builder.Build();
 
@@ -43,3 +44,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+void AddScoped(){ 
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IUnitofWork, UnitOfWork>();
+
+}
