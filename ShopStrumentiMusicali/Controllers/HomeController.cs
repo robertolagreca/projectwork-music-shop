@@ -27,7 +27,7 @@ namespace ShopStrumentiMusicali.Controllers
 
         public IActionResult Details(int id) {
             using (ParamusicContext db = new ParamusicContext()) {
-                // LINQ: syntax methos
+
                 Instrument instrumentFound = db.Instruments
                     .Where(singleInstrument => singleInstrument.Id == id)
                     .Include(instrument => instrument.Category)
