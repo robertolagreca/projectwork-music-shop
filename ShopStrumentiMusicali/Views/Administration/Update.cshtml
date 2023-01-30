@@ -14,7 +14,7 @@
     <h1 class="text-danger">Modifica strumento</h1>
 </div>
 
-<form asp-controller="Pizza" asp-action="Update" asp-route-id ="@Model.Instrument.Id" method="post">
+<form asp-controller="Instrument" asp-action="Update" asp-route-id ="@Model.Instrument.Id" method="post">
     @Html.AntiForgeryToken()
 
     <div class="mb-3 form-check">
@@ -51,7 +51,7 @@
                 <label>Categoria:</label>
             <select asp-for="Instrument.Category" rows="10" class="d-block w-100">
                     <option value=""></option>
-            @foreach (Category category in Model.Category)
+            @foreach (Category category in Model.Categories)
             {
                             <option value="@category.Id">@category.CategoryName</option>
             }
@@ -67,7 +67,7 @@
     <!--Bottone per cancellare (magari da sistemare)-->
     <div>
         <!--NOTA PER IL TASTO DELETE SI CREA UN FINTO FORM-->
-        <form asp-controller="instrument" asp-action="Delete" asp-route-id="@instrument.Id" method="post" class="d-grid">
+        <form asp-controller="administration" asp-action="Delete" asp-route-id="instrument.Id" method="post" class="d-grid">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-danger btn-sm p-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>

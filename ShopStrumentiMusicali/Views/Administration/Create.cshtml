@@ -48,7 +48,7 @@
 				<label>Categoria:</label>
 			<select asp-for="Instrument.Category" rows="10" class="d-block w-100">
 					<option value=""></option>
-				@foreach (Category category in Model.Category)
+				@foreach (Category category in Model.Categories)
 				{
 						<option value="@category.Id">@category.CategoryName</option>
 				}
@@ -61,7 +61,7 @@
 				<label>Fornitore:</label>
 			<select asp-for="Instrument.ShopTransactions" rows="10" class="d-block w-100">
 					<option value=""></option>
-				@foreach (ShopTransaction supply in Model.ShopTransaction)
+				@foreach (ShopTransaction supply in Model.ShopTransactions)
 				{
 					<option value="@supply.Id">@supply.SupplierName</option>
 				}

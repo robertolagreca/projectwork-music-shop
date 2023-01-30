@@ -4,11 +4,11 @@ using ShopStrumentiMusicali.Models;
 
 namespace ShopStrumentiMusicali.Controllers {
     public class AdministrationController : Controller {
-        public IActionResult Index() {
+        public IActionResult IndexAdm() {
             
             using (ParamusicContext db = new ParamusicContext()) {
                 List<Instrument> instrumentsList = db.Instruments.ToList<Instrument>();
-                return View("Index", instrumentsList);
+                return View("IndexAdm", instrumentsList);
             }
    
         }
@@ -41,7 +41,7 @@ namespace ShopStrumentiMusicali.Controllers {
             }
 
             using (ParamusicContext db = new ParamusicContext()) {
-                db.Instruments.Add(formData);
+                db.Instruments.Add(formData.Instrument);
                 db.SaveChanges();
             }
 
@@ -60,7 +60,7 @@ namespace ShopStrumentiMusicali.Controllers {
                 List<Category> categories = db.Categories.ToList<Category>();
 
                 InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
-                modelForView.Instrument = InstrumentCategoriesView;
+                modelForView.Instrument = instrumentToUpdate;
                 modelForView.Categories = categories;
 
                 return View("Update", instrumentToUpdate);
@@ -70,10 +70,10 @@ namespace ShopStrumentiMusicali.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(InstrumentCategoriesView formData) {
+        public IActionResult Update(int id, InstrumentCategoriesView formData) {
             if (!ModelState.IsValid) {
 
-                using (InstrumentCategoriesView db = new InstrumentCategoriesView()) {
+                using (ParamusicContext db = new ParamusicContext()) {
                     List<Category> categories = db.Categories.ToList<Category>();
 
                     formData.Categories = categories;
@@ -84,12 +84,12 @@ namespace ShopStrumentiMusicali.Controllers {
 
             using (ParamusicContext db = new ParamusicContext()) {
                 
-                Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == formData.Id).FirstOrDefault();
+                Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
 
                 if (instrumentToUpdate != null) {
-                    instrumentToUpdate.Name = formData.Name;
-                    instrumentToUpdate.Description = formData.Description;
-                    instrumentToUpdate.ImageURL = instrumentToUpdate.ImageURL;
+                    instrumentToUpdate.Name = formData.Instrument.Name;
+                    instrumentToUpdate.Description = formData.Instrument.Description;
+                    instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
 
                     db.SaveChanges();
 
