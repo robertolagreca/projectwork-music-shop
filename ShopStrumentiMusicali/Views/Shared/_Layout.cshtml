@@ -9,22 +9,30 @@
     <title>ParaMusic Instrument Store</title>
 </head>
 <body>
-    <!--Inizio layout-->
-    <nav class="navbar navbar-dark bg-dark fixed-top z-0">
+    <!--Inizio Navbar-->
+    <nav class="navbar navbar-dark bg-dark static-top">
         <div class="container-fluid">
-            <img src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="5%" height="1%" class="d-inline-block">
-            <p class="navbar-brand d-flex mx-0 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
+            <!--Logo Navbar-->
+            <img src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="5%" height="1%"
+                 class="d-inline-block">
+            <!--Titolo centrale-->
+            <p class="navbar-brand d-flex justify-content-center ms-5 ps-5 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
             <div class="">
+                <!--Bottoni login Registrati-->
                 <button type="button" class="btn btn-success">Login</button>
                 <button type="button" class="btn btn-warning me-3 ms-2">Registrati</button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                        aria-controls="offcanvasDarkNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
+                    <!--Sezione menu off-canvas (laterale)-->
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ParaMusic Instrument Store</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -32,10 +40,18 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Il nostro negozio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">I nostri fornitori</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Contattaci!</a>
                         </li>
+                        <!--opzioni dropdown menu-->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
                                 Il nostro catalogo:
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
@@ -52,9 +68,10 @@
                             </ul>
                         </li>
                     </ul>
+                    <!--Search-bar-->
                     <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Ricerca un prodotto:</button>
+                        <input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search">
+                        <button class="btn btn-success" type="submit">Ricerca avanzata:</button>
                     </form>
                 </div>
             </div>
