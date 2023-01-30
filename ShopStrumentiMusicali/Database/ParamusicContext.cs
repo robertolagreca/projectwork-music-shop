@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShopStrumentiMusicali.Models;
 
 namespace ShopStrumentiMusicali.Database
 {
-    public class ParamusicContext : DbContext
+    public class ParamusicContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Category> Categories { get; set; }
