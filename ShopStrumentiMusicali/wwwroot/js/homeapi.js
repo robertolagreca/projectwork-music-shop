@@ -76,7 +76,7 @@ function sendInstrument(e){
             "price" : //Inserirre getElementBy,
             "userID" : //Inserirre getElementBy,
             "ordineID": //Inserirre getElementBy
-        }; }
+        }}
         ).then((response) => {
             console.log('strumento pronto per essere acquistato');
             window.location.href='' //PERCORSO CHE PORTA ALLA PAGINA COMPRA.
