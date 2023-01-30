@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopStrumentiMusicali.Database;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("ParamusicContextConnection") ?? throw new InvalidOperationException("Connection string 'ParamusicContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
