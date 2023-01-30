@@ -4,14 +4,31 @@
 //Per visualizzare per ogni prodotto su index
 
 //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
-const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-axios.get("/api/InstrumentApi/" + id).then((res) => {
-    let instrument = res.data;
-    console.log('strumento visualizzato', instrument);
 
 
-    document.getElementById('instrument_container').innerHTML +=
-        `
+function loadInstruments() {
+    axios.get("/api/InstrumentApi/").then((res) => {
+
+        let instrument = res.data;
+        console.log('strumento visualizzato', instrument);
+
+        if (res.data.length == 0) {
+
+                        document.querySelector('.js_no_instrument').classList.remove('d-none');
+                        document.querySelector('.js_instrument_table').classList.add('d-none');
+
+        } else {
+            document.querySelector('.js_instrument_table').classList.remove('d-none');
+            document.querySelector('.js_no_instrument').classList.add('d-none');
+
+            document.querySelector('.js_instrument_table').innerHTML = '';
+
+            instrument.forEach(instrument => {
+
+                console.log('strumento', instrument);
+
+                document.getElementById('js_instrument_table').innerHTML +=
+                    `
                         <div class="col-12 col-md-4 p-2">
                               <div class="card post h-100">
                                     <img src="${instrument.imageUrl}" class="card-img-top" alt="strumento">
@@ -25,8 +42,17 @@ axios.get("/api/InstrumentApi/" + id).then((res) => {
                             </div>
                         </div>
                     `;
+            });
+        }.catch((error) => {
+        console.log(error);
+    });
 
-});
+}
+})
+};
+
+
+
 
 // LE ALTRI DUE API NON ANCORA ATTIVE.
 
