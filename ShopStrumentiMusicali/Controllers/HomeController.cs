@@ -30,7 +30,7 @@ namespace ShopStrumentiMusicali.Controllers
                 // LINQ: syntax methos
                 Instrument instrumentFound = db.Instruments
                     .Where(singleInstrument => singleInstrument.Id == id)
-                    .Include(post => post.Category)
+                    .Include(instrument => instrument.Category)
                     .FirstOrDefault();
 
                 if (instrumentFound != null) {
