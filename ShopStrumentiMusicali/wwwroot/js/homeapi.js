@@ -17,9 +17,10 @@ axios.get("/api/InstrumentApi/" + id).then((res) => {
                                     <img src="${instrument.imageUrl}" class="card-img-top" alt="strumento">
                                     <div class="card-body">
                                     <h5 class="card-title">${instrument.name}</h5>
-                                            <!--<p class="card-text">${instrument.description}</p> -->
+                                            <p class="card-text">${instrument.description}</p>
                                             <p class="card-text">${instrument.price}</p>
-                                           <!-- AGGIUNGERE BOTTONI -->
+                                            <a href="#" class="btn btn-primary">Dettagli</a>
+                                            <a href="#" class="btn btn-primary">Compra</a>
                                     </div>
                             </div>
                         </div>
