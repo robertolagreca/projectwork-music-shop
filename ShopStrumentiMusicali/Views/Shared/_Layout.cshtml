@@ -10,13 +10,17 @@
 </head>
 <body>
     <!--Inizio layout-->
-    <nav class="navbar navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-dark bg-dark fixed-top z-0">
         <div class="container-fluid">
             <img src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="5%" height="1%" class="d-inline-block">
             <p class="navbar-brand d-flex mx-0 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="">
+                <button type="button" class="btn btn-success">Login</button>
+                <button type="button" class="btn btn-warning me-3 ms-2">Registrati</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ParaMusic Instrument Store</h5>
@@ -49,25 +53,14 @@
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="...">
-                        <button class="btn btn-success" type="submit">Ricerca:</button>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Ricerca un prodotto:</button>
                     </form>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row header-text-color header-bg-color">
-            <div class="col-sm my-2 ps-5 pt-2">
-                <p class="text-start fs-5 fw-bold">Contattaci!</p>
-            </div>
-            <div class="col-sm-6"></div>
-            <div class="col-sm my-2 pe-5 pt-2">
-                <p class="text-end fs-5 fw-bold">Registrati / Login</p>
-            </div>
-        </div>
-    </div>
             @RenderBody()  
             
     <footer class="border-top footer text-muted">
