@@ -10,21 +10,52 @@
 </head>
 <body>
     <!--Inizio layout-->
-    <header class="sticky-text-color container-fluid">
-        <div class="row sticky-bg-color sticky-top">
-            <div class="col-sm mx-3 mt-3 mb-0">
-                <img id="logo" class="logo me-3" src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo">
-                <p class="text-start mb-0 fs-5 fw-bolder">ParaMusic Instrument Store</p>
-                <p class="text-start mt-1 fs-6">Il meglio della musica, ad un prezzo che suona bene!</p>
-            </div>
-            <div class="col-sm-6"></div>
-            <div class="col-sm mx-3 mt-4 pt-3 me-5 mb-0">
-                <div>
-                    <input id="input_search" type="text" class="form-control" placeholder="Cerca un prodotto..." />
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <img src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="5%" height="1%" class="d-inline-block">
+            <p class="navbar-brand d-flex mx-0 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ParaMusic Instrument Store</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contattaci!</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Il nostro catalogo:
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">Strumenti a corda</a></li>
+                                <li><a class="dropdown-item" href="#">Strumenti a percussione</a></li>
+                                <li><a class="dropdown-item" href="#">Strumenti a fiato</a></li>
+                                <li><a class="dropdown-item" href="#">Strumenti a tastiera</a></li>
+                                <li><a class="dropdown-item" href="#">Strumenti elettronici / MIDI</a></li>
+                                <li><a class="dropdown-item" href="#">Strumenti a percussione</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Catalogo completo</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="...">
+                        <button class="btn btn-success" type="submit">Ricerca:</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <div class="container-fluid">
         <div class="row header-text-color header-bg-color">
