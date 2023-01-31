@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopStrumentiMusicali.Database;
 using ShopStrumentiMusicali.Models;
 
@@ -15,16 +16,33 @@ namespace ShopStrumentiMusicali.Controllers {
 
         [HttpGet]
         public IActionResult Create() {
-            using (ParamusicContext db = new ParamusicContext()) {
+            using (ParamusicContext db = new ParamusicContext())
+            {
                 List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+                List<ShopTransaction> shopTransactionsFromDb = db.ShopTransactions.ToList<ShopTransaction>();
 
                 InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
                 modelForView.Instrument = new Instrument();
 
-                modelForView.Categories = categoriesFromDb;
+                List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
+                modelForView.Categories = categoriesFromDb;
+                modelForView.ShopTransactions = shopTransactionsFromDb;
                 return View("Create", modelForView);
             }
+        }
+
+        private static List<Category> CategoriesToSelectList(List<Category> categoriesFromDb)
+        {
+            List<Category> selectList = new List<Category>();
+            foreach (Category category in categoriesFromDb)
+            {
+                Category item = new Category();
+                item = category;
+                selectList.Add(item);
+            }
+
+            return selectList;
         }
 
         [HttpPost]
@@ -32,8 +50,13 @@ namespace ShopStrumentiMusicali.Controllers {
         public IActionResult Create(InstrumentCategoriesView formData) {
             if (!ModelState.IsValid) {
                 using (ParamusicContext db = new ParamusicContext()) {
-                    List<Category> categories = db.Categories.ToList<Category>();
-                    formData.Categories = categories;
+                    List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+                    List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+
+
+                    formData.Categories = categoriesFromDb;
+                    List<ShopTransaction> transactions = db.ShopTransactions.ToList<ShopTransaction>();
+                    formData.ShopTransactions = transactions;
                 }
 
 
@@ -57,11 +80,14 @@ namespace ShopStrumentiMusicali.Controllers {
                     return NotFound("Lo strumento non è stato trovato");
                 }
 
-                List<Category> categories = db.Categories.ToList<Category>();
+                List<Category> categoriesFromDb = db.Categories.ToList<Category>();
 
                 InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
+
+                List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+
                 modelForView.Instrument = instrumentToUpdate;
-                modelForView.Categories = categories;
+                modelForView.Categories = selectList;
 
                 return View("Update", instrumentToUpdate);
             }
@@ -74,9 +100,10 @@ namespace ShopStrumentiMusicali.Controllers {
             if (!ModelState.IsValid) {
 
                 using (ParamusicContext db = new ParamusicContext()) {
-                    List<Category> categories = db.Categories.ToList<Category>();
+                    List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+                    List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
-                    formData.Categories = categories;
+                    formData.Categories = selectList;
                 }
 
                 return View("Update", formData);

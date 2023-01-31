@@ -5,7 +5,7 @@
 
 //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
 
-debugger;
+
 function loadInstruments() {
 axios.get("/api/instrumentapi/").then((res) => {
 

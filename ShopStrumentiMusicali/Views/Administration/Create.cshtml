@@ -16,7 +16,7 @@
 </div>
 
 <div class="container">
-	<form asp-controller="Instrument" asp-action="Create" method="Post">
+	<form asp-controller="Administration" asp-action="Create" method="Post">
 		@Html.AntiForgeryToken()
 
 		<div class="mb-3 form-check">
@@ -71,7 +71,7 @@
 
 		<!--Bottone salva-->
 		<div class="d-grid justify-content-end">
-			<button type="submit" class="btn btn-primary btn-danger" formmethod="post">Salva</button>
+			<button type="submit" class="btn btn-primary btn-danger">Salva</button>
 		</div>
 
 	</form>
