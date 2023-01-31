@@ -7,28 +7,28 @@
 
 
 function loadInstruments() {
-axios.get("/api/instrumentapi/").then((res) => {
+    axios.get("/api/instrumentapi/").then((res) => {
 
-    let instrument = res.data;
-    console.log('strumento visualizzato', instrument);
+        let instrument = res.data;
+        console.log('strumento visualizzato', instrument);
 
-    if (res.data.length == 0) {
+        if (res.data.length == 0) {
 
-        document.querySelector('.js_no_instrument').classList.remove('d-none');
-        document.querySelector('.js_instrument_table').classList.add('d-none');
+            document.querySelector('.js_no_instrument').classList.remove('d-none');
+            document.querySelector('.js_instrument_table').classList.add('d-none');
 
 
-        document.querySelector('.js_instrument_table').classList.remove('d-none');
-        document.querySelector('.js_no_instrument').classList.add('d-none');
+            document.querySelector('.js_instrument_table').classList.remove('d-none');
+            document.querySelector('.js_no_instrument').classList.add('d-none');
 
-        document.querySelector('.js_instrument_table').innerHTML = '';
+            document.querySelector('.js_instrument_table').innerHTML = '';
 
-        instrument.forEach(instrument => {
+            instrument.forEach(instrument => {
 
-            console.log('strumento', instrument);
+                console.log('strumento', instrument);
 
-            document.getElementById('js_instrument_table').innerHTML +=
-                `
+                document.getElementById('js_instrument_table').innerHTML +=
+                    `
                         <div class="col-12 col-md-4 p-2">
                               <div class="card post h-100">
                                     <img src="${instrument.imageUrl}" class="card-img-top" alt="strumento">
@@ -43,9 +43,10 @@ axios.get("/api/instrumentapi/").then((res) => {
                         </div>
                     `;
 
-        });
-    } else {
-        document.getElementById('js_no_instrument').classList.remove('d-none');
-        document.getElementById('js_instrument_table').classList.add('d-none');
-    }
-});
+            });
+        } else {
+            document.getElementById('js_no_instrument').classList.remove('d-none');
+            document.getElementById('js_instrument_table').classList.add('d-none');
+        }
+    });
+}

@@ -42,20 +42,79 @@
     </div>
 </div>
 
+
+
 <!--Verranno visualizzate le card attraverso l'API-->
-<div class="container-fluid">
+<div class="container">
     <!--Richiamo a file JS-->
-     <div id="container_no_instrument" class="row text-center d-none">
-              <div class="col-12">
-                  <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
-              </div>
-          </div>
-    <div id="js_instrument_table" class="row d-none">
-               <!--qui verranno mostrati gli elementi -->
+    <div class="js_no_instrument row text-center d-none">
+        <div class="col-12">
+            <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
+        </div>
+    </div>
+    <div class="js_instrument_table row d-none">
+        <!--qui verranno mostrati gli elementi -->
         <!--Richiamo a file JS-->
-        
-          </div>
-    
+    </div>
 </div>
-<script type="text/javascript" src="~/js/homeapi.js"></script>
+
+
+
+<!--AXIOS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+
+<!----><script type="text/javascript">
+    //src = "~/js/homeapi.js
+
+    loadInstruments();
+
+    function loadInstruments() {
+        axios.get('/api/InstrumentApi/').then((res) => {
+
+            //let instrument = res.data;
+
+            console.log('strumento visualizzato', res);
+            
+            if (res.data.length > 0) {
+               
+               document.querySelector('.js_no_instrument').classList.remove('d-none');
+               document.querySelector('.js_instrument_table').classList.add('d-none');
+            
+
+                //document.getElementById('.js_instrument_table').classList.remove('d-none');
+               // document.getElementById('.js_no_instrument').classList.add('d-none');
+
+                       document.querySelector('.js_instrument_table').innerHTML = '';
+
+                res.data.forEach(instrument => {
+
+                    console.log('strumento', instrument);
+
+                    document.querySelector('.js_instrument_table').innerHTML +=
+                        `
+                            <div class="col-12 col-md-4 p-2">
+                                        <div class="card post h-100">
+                                          <img src="${instrument.ImageURL}" class="card-img-top" alt="strumento">
+                                        <div class="card-body">
+                                        <h5 class="card-title">${instrument.name}</h5>
+                                                <p class="card-text">${instrument.description}</p>
+                                                <p class="card-text">${instrument.price}</p>
+                                                <a href="#" class="btn btn-primary">Dettagli</a>
+                                                <a href="#" class="btn btn-primary">Compra</a>
+                                        </div>
+                                </div>
+                            </div>
+                        `;
+
+                });
+            } else {
+                       document.querySelector('.js_no_instrument').classList.remove('d-none');
+                       document.querySelector('.js_instrument_table').classList.add('d-none');
+           }
+        });
+    }
+</script>
+
+
+
 
