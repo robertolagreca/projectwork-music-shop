@@ -4,6 +4,8 @@ namespace ShopStrumentiMusicali.Repositories
 {
     public interface IUserRepository
     {
-        ICollection<IdentityUser> GetUsers();
+       public ICollection<IdentityUser> GetUsers();
+       public IdentityUser GetUser(string id);
+        public IdentityUser UpdateUser(IdentityUser user);
     }
 }

@@ -2,6 +2,7 @@
 {
     public interface IUnitofWork
     {
-        IUserRepository User { get; }   
+        IUserRepository User { get; }
+        IRoleRepository Role { get; }
     }
 }

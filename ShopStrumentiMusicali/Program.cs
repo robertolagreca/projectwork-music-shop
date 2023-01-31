@@ -48,6 +48,7 @@ app.Run();
 
 void AddScoped(){ 
     builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IRoleRepository, RoleRepository>();
     builder.Services.AddScoped<IUnitofWork, UnitOfWork>();
 
 }

@@ -12,11 +12,21 @@ namespace ShopStrumentiMusicali.Repositories
             _context = context;
         }
 
+        public IdentityUser GetUser(string id)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == id);
+        }
 
-
-public ICollection<IdentityUser> GetUsers()
+        public ICollection<IdentityUser> GetUsers()
         {
             return _context.Users.ToList();
+        }
+
+        public IdentityUser UpdateUser(IdentityUser user)
+        {
+            _context.Update(user);
+            _context.SaveChanges();
+            return user;
         }
     }
 }
