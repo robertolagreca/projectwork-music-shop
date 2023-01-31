@@ -2,7 +2,123 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<!--Carousel index-->
+
+<div class="container-fluid carousel-background pb-5">
+    <div class="row">
+        <div class="col"></div>
+        <div id="carouselExampleAutoplaying" class="carousel slide col my-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2500">
+                    <img src="https://www.informusic.it/wp-content/uploads/2020/10/miglior-violino.jpg" class="d-block w-100"
+                         alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://www.raiscuola.rai.it/dl/img/2021/03/24/1616586033732_1584444217498_fotoMusica2020.jpg"
+                         class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://spettacolo.com/media/catalog/category/arredamento-music-store-pannelli-dogato-bianco-SPETTACOLO-Shop-For-Store-min.jpg"
+                         class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
+
+
+
+<!--Verranno visualizzate le card attraverso l'API-->
+<div class="container">
+    <!--Richiamo a file JS-->
+    <div id="js_no_instrument" class="row text-center d-none">
+        <div class="col-12">
+            <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
+        </div>
+    </div>
+    <div id="js_instrument_table" class="row d-none">
+        <!--qui verranno mostrati gli elementi -->
+        <!--Richiamo a file JS-->
+    </div>
+</div>
+
+
+
+<!--AXIOS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+
+<script type="text/javascript">
+
+
+    loadInstruments();
+
+    function loadInstruments() {
+        axios.get('/api/InstrumentApi/').then((res) => {
+
+            //let instrument = res.data;
+
+            console.log('strumento visualizzato', res);
+            
+
+
+               
+                if (res.data.length == 0) {
+
+                    document.getElementById('js_no_instrument').classList.remove('d-none');
+                    document.getElementById('js_instrument_table').classList.add('d-none');
+
+                } else {
+
+                document.getElementById('js_instrument_table').classList.remove('d-none');
+                document.getElementById('js_no_instrument').classList.add('d-none');
+
+            
+
+                //document.getElementById('.js_instrument_table').classList.remove('d-none');
+               // document.getElementById('.js_no_instrument').classList.add('d-none');
+
+                       document.getElementById('js_instrument_table').innerHTML = '';
+
+                res.data.forEach(instrument => {
+
+                    console.log('strumento', instrument);
+
+                        document.getElementById('js_instrument_table').innerHTML +=
+                        `
+                                <div class="card" style="width: 18rem;">
+                                       
+                                        <div class="card-image">
+                                              <img src="${instrument.imageurl}" class="card-img-top" alt="strumento">
+                                        <div class="card-body">
+
+                                        <h5 class="card-title">${instrument.name}</h5>
+                                                <p class="card-text">${instrument.description}</p>
+                                                    <p class="card-text">${instrument.price}</p>
+                                                        <a href="/Home/Details/${instrument.id}" class="btn btn-primary">Dettagli</a>
+                                                <a href="#" class="btn btn-primary">Compra</a>
+                                        </div>
+                                </div>
+                            </div>
+                        `;
+
+                });
+            }
+                       
+            
+        });
+    }
+</script>
+
+
