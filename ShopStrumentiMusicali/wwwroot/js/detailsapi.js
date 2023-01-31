@@ -1,8 +1,8 @@
 
 //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
 const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-        axios.get("/api/NOME CONTROLLER API/" + id ).then((res) => {
-                let instrument = res.data;
+axios.get("/Home/Details/id).then((res) => {
+                
                 console.log('strumento visualizzato', instrument);
 
 
