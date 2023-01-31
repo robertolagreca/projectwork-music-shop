@@ -1,10 +1,4 @@
-﻿<!--@@page
-@@model ShopStrumentiMusicali.Views.Administration.CreateModel -->
-
-
-<!-- Da inserire @@model lista di strumenti-->
-@using ShopStrumentiMusicali.Models;
-@model InstrumentCategoriesView
+﻿@model InstrumentCategoriesView
 
 @{
 	Layout = "_Layout";
@@ -16,7 +10,7 @@
 </div>
 
 <div class="container">
-	<form asp-controller="Administration" asp-action="Create" method="Post">
+	<form asp-controller="Administration" asp-action="Create" method="post">
 		@Html.AntiForgeryToken()
 
 		<div class="mb-3 form-check">
@@ -45,33 +39,36 @@
 
 		<!--Da sistemare sicuro in base la categoria-->
 		<div class="mb-3 form-check">
-				<label>Categoria:</label>
-			<select asp-for="Instrument.Category" rows="10" class="d-block w-100">
+			<label>Categoria:</label>
+			<select asp-for="Instrument.CategoryID" rows="10" class="d-block w-100" aria-label="category">
 					<option value=""></option>
 				@foreach (Category category in Model.Categories)
 				{
 						<option value="@category.Id">@category.CategoryName</option>
 				}
 				</select>
-			<span asp-validation-for="Instrument.Category" class="text-danger"></span>
+			<span asp-validation-for="Instrument.CategoryID" class="text-danger"></span>
 			</div>
 
 		<!--Da sistemare sicuro in base allo shop transaction-->
 		 <div class="mb-3 form-check">
 				<label>Fornitore:</label>
-			<select asp-for="Instrument.ShopTransactions" rows="10" class="d-block w-100">
+			<select asp-for="Instrument.ShopTransactions" rows="10" class="d-block w-100" aria-label="shoptransaction">
 					<option value=""></option>
-				@foreach (ShopTransaction supply in Model.ShopTransactions)
-				{
-					<option value="@supply.Id">@supply.SupplierName</option>
-				}
+					@foreach (ShopTransaction supply in Model.ShopTransactions)
+					{
+						<option value="@supply.Id">@supply.SupplierName</option>
+					}
 				</select>
 			<span asp-validation-for="Instrument.ShopTransactions" class="text-danger"></span>
 			</div>
 
 		<!--Bottone salva-->
+
+		<button type="submit" class="btn btn-info">Salva</button>
+
 		<div class="d-grid justify-content-end">
-			<button type="submit" class="btn btn-primary btn-danger">Salva</button>
+			
 		</div>
 
 	</form>

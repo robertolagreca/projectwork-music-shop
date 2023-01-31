@@ -24,7 +24,7 @@ namespace ShopStrumentiMusicali.Controllers {
                 InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
                 modelForView.Instrument = new Instrument();
 
-                List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+                //List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
                 modelForView.Categories = categoriesFromDb;
                 modelForView.ShopTransactions = shopTransactionsFromDb;
@@ -32,7 +32,7 @@ namespace ShopStrumentiMusicali.Controllers {
             }
         }
 
-        private static List<Category> CategoriesToSelectList(List<Category> categoriesFromDb)
+        /*private static List<Category> CategoriesToSelectList(List<Category> categoriesFromDb)
         {
             List<Category> selectList = new List<Category>();
             foreach (Category category in categoriesFromDb)
@@ -43,19 +43,21 @@ namespace ShopStrumentiMusicali.Controllers {
             }
 
             return selectList;
-        }
+        }*/
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(InstrumentCategoriesView formData) {
+
             if (!ModelState.IsValid) {
+                Console.WriteLine("Debug here");
+
                 using (ParamusicContext db = new ParamusicContext()) {
                     List<Category> categoriesFromDb = db.Categories.ToList<Category>();
-                    List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+					List<ShopTransaction> transactions = db.ShopTransactions.ToList<ShopTransaction>();
+					//List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
-
-                    formData.Categories = categoriesFromDb;
-                    List<ShopTransaction> transactions = db.ShopTransactions.ToList<ShopTransaction>();
+					formData.Categories = categoriesFromDb;
                     formData.ShopTransactions = transactions;
                 }
 
@@ -68,7 +70,7 @@ namespace ShopStrumentiMusicali.Controllers {
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdm");
         }
 
         [HttpGet]
@@ -84,12 +86,12 @@ namespace ShopStrumentiMusicali.Controllers {
 
                 InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
 
-                List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+                //List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
                 modelForView.Instrument = instrumentToUpdate;
-                modelForView.Categories = selectList;
+                modelForView.Categories = categoriesFromDb;
 
-                return View("Update", instrumentToUpdate);
+                return View("Update", modelForView);
             }
 
         }
@@ -101,9 +103,9 @@ namespace ShopStrumentiMusicali.Controllers {
 
                 using (ParamusicContext db = new ParamusicContext()) {
                     List<Category> categoriesFromDb = db.Categories.ToList<Category>();
-                    List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+                    //List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
-                    formData.Categories = selectList;
+                    formData.Categories = categoriesFromDb;
                 }
 
                 return View("Update", formData);
@@ -117,10 +119,12 @@ namespace ShopStrumentiMusicali.Controllers {
                     instrumentToUpdate.Name = formData.Instrument.Name;
                     instrumentToUpdate.Description = formData.Instrument.Description;
                     instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
+                    instrumentToUpdate.CategoryID = formData.Instrument.CategoryID;
+                    instrumentToUpdate.Price = formData.Instrument.Price;
 
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("IndexAdm");
                 } else {
                     return NotFound("Lo strumento che volevi modificare non è stato trovato!");
                 }
@@ -138,7 +142,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     db.Instruments.Remove(instrumentToDelete);
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("IndexAdm");
                 } else {
                     return NotFound("Lo strumento da eliminare non è stato trovato!");
                 }
