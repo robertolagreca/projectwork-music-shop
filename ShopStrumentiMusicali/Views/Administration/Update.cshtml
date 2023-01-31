@@ -2,7 +2,6 @@
 @@model ShopStrumentiMusicali.Views.Administration.UpdateModel -->
 
 <!-- Da inserire @@model da inserire il controller-->
-@using ShopStrumentiMusicali.Models;
 @model InstrumentCategoriesView
 
 @{
@@ -14,7 +13,7 @@
     <h1 class="text-danger">Modifica strumento</h1>
 </div>
 
-<form asp-controller="Instrument" asp-action="Update" asp-route-id ="@Model.Instrument.Id" method="post">
+<form asp-controller="Administration" asp-action="Update" method="post">
     @Html.AntiForgeryToken()
 
     <div class="mb-3 form-check">
@@ -56,7 +55,7 @@
                             <option value="@category.Id">@category.CategoryName</option>
             }
                 </select>
-            <span asp-validation-for="Instrument.Category" class="text-danger"></span>
+            <span asp-validation-for="Instrument.CategoryID" class="text-danger"></span>
             </div>
 
     <!--Bottone per salvare aggiornamenti-->

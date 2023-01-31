@@ -11,6 +11,8 @@ namespace ShopStrumentiMusicali.Models
         [Column(TypeName = "varchar(100)")]
         public string CategoryName { get; set; }
 
-        public List<Instrument> Instruments { get; set; }
+        public List<Instrument>? Instruments { get; set; }
+
+        public Category() { }
     }
 }
