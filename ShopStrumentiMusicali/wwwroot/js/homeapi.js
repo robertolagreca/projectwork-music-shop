@@ -6,8 +6,8 @@
 //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
 
 debugger;
-//function loadInstruments() {
-axios.get("/api/InstrumentApi/").then((res) => {
+function loadInstruments() {
+axios.get("/api/instrumentapi/").then((res) => {
 
     let instrument = res.data;
     console.log('strumento visualizzato', instrument);
@@ -49,4 +49,3 @@ axios.get("/api/InstrumentApi/").then((res) => {
         document.getElementById('js_instrument_table').classList.add('d-none');
     }
 });
-//}
