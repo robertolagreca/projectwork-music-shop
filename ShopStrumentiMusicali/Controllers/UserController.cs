@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopStrumentiMusicali.Database;
 using ShopStrumentiMusicali.Models;
 using ShopStrumentiMusicali.Repositories;
+using System.Data;
 
 namespace ShopStrumentiMusicali.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         
