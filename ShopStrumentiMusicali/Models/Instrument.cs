@@ -22,6 +22,14 @@ namespace ShopStrumentiMusicali.Models
 
         public int Price { get; set; }
 
+		[Column(TypeName = "int")]
+		[Range(0,500000, ErrorMessage = "Invalid value for stock quantity")]
+        public int? Quantity { get; set; }
+
+		[Column(TypeName = "int")]
+		[Range(0, 500000, ErrorMessage = "Invalid value for user likes")]
+		public int? UserLikes { get; set; }
+
         public int CategoryID { get; set; }
         public Category? Category { get; set; }
 
