@@ -98,6 +98,31 @@ namespace ShopStrumentiMusicali.Controllers {
 
         }
 
+        [HttpGet]
+        public IActionResult Purchase(int id)
+        {
+            using (ParamusicContext db = new ParamusicContext())
+            {
+                Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+
+                if (instrumentToUpdate == null)
+                {
+                    return NotFound("Lo strumento non è stato trovato");
+                }
+
+                List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+
+                InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
+
+
+                modelForView.Instrument = instrumentToUpdate;
+                modelForView.Categories = categoriesFromDb;
+
+                return View("Purchase", modelForView);
+            }
+
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, InstrumentCategoriesView formData) {
