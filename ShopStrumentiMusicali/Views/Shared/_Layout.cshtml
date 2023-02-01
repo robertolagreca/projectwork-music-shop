@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +24,28 @@
             <p class="navbar-brand d-flex justify-content-center ms-5 ps-5 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
             <div class="">
                 <!--Bottoni login Registrati-->
-                <button type="button" class="btn btn-success">Login</button>
-                <button type="button" class="btn btn-warning me-3 ms-2">Registrati</button>
+              
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                    <div class="nav-items">
+                            <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ciao: @UserManager.GetUserName(User)!</a>
+                        
+                        
+                            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button id="logout" type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                            </form> 
+                        </div>
+                    }
+                    else
+                    {
+
+                       
+                
+                          <a class="btn btn-success" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a> 
+                          <a class="btn btn-warning" id="register" asp-area="Identity" asp-page="/Account/Register">Registrati</a>
+                    }
+                
+              
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                         aria-controls="offcanvasDarkNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -81,6 +106,7 @@
                 </div>
             </div>
         </div>
+  
     </nav>
 
             @RenderBody()  
