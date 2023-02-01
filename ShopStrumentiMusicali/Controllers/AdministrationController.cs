@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopStrumentiMusicali.Database;
 using ShopStrumentiMusicali.Models;
+using System.Data;
 
 namespace ShopStrumentiMusicali.Controllers {
     public class AdministrationController : Controller {
@@ -129,11 +131,11 @@ namespace ShopStrumentiMusicali.Controllers {
                     return NotFound("Lo strumento che volevi modificare non è stato trovato!");
                 }
             }
-
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id) {
             using (ParamusicContext db = new ParamusicContext()) {
                 Instrument instrumentToDelete = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
