@@ -188,7 +188,12 @@
 
                                                     <p class="card-text">${instrument.price}</p>
                                                      <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
-                                                    <a href="#" class="btn btn-primary">Compra</a>
+                                                    @if (User.Identity.IsAuthenticated)
+                                                    {
+                                                    <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
+                                                     }else{
+                                                     <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
+                                                     }
                                             </div>
                                     </div>
                                 </div>
