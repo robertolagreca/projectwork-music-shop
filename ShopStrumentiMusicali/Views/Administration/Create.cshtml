@@ -1,0 +1,76 @@
+﻿@model InstrumentCategoriesView
+
+@{
+	Layout = "_Layout";
+}
+
+
+<div class="d-flex align-items-center">
+	<h1 class="text-danger">Aggiungere strumento</h1>
+</div>
+
+<div class="container">
+	<form asp-controller="Administration" asp-action="Create" method="post">
+		@Html.AntiForgeryToken()
+
+		<div class="mb-3 form-check">
+			<label>Path Immagine:</label>
+			<input asp-for="Instrument.ImageURL" type="text" class="form-control" />
+			<span asp-validation-for="Instrument.ImageURL" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3 form-check">
+			<label>Nome:</label>
+			<input asp-for="Instrument.Name" type="text" class="form-control" />
+			<span asp-validation-for="Instrument.Name" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3 form-check">
+			<label>Descrizione:</label>
+			<textarea asp-for="Instrument.Description" rows="10" class="d-block w-100"></textarea>
+			<span asp-validation-for="Instrument.Description" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3 form-check">
+			<label>Prezzo:</label>
+			<input asp-for="Instrument.Price" type="text" class="form-control" />
+			<span asp-validation-for="Instrument.Price" class="text-danger"></span>
+		</div>
+
+		<!--Da sistemare sicuro in base la categoria-->
+		<div class="mb-3 form-check">
+			<label>Categoria:</label>
+			<select asp-for="Instrument.CategoryID" rows="10" class="d-block w-100" aria-label="category">
+					<option value=""></option>
+				@foreach (Category category in Model.Categories)
+				{
+						<option value="@category.Id">@category.CategoryName</option>
+				}
+				</select>
+			<span asp-validation-for="Instrument.CategoryID" class="text-danger"></span>
+			</div>
+
+		<!--Da sistemare sicuro in base allo shop transaction-->
+		 <div class="mb-3 form-check">
+				<label>Fornitore:</label>
+			<select asp-for="Instrument.ShopTransactions" rows="10" class="d-block w-100" aria-label="shoptransaction">
+					<option value=""></option>
+					@foreach (ShopTransaction supply in Model.ShopTransactions)
+					{
+						<option value="@supply.Id">@supply.SupplierName</option>
+					}
+				</select>
+			<span asp-validation-for="Instrument.ShopTransactions" class="text-danger"></span>
+			</div>
+
+		<!--Bottone salva-->
+
+		<button type="submit" class="btn btn-info">Salva</button>
+
+		<div class="d-grid justify-content-end">
+			
+		</div>
+
+	</form>
+
+</div>

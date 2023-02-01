@@ -1,0 +1,60 @@
+﻿<!--@@page
+@@model ShopStrumentiMusicali.Views.Home.DetailsModel-->
+
+@using ShopStrumentiMusicali.Models;
+@model Instrument
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="instrument_container">
+            </div>
+        </div>
+    </div>
+</div>
+<!--AXIOS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<!--Collegamento a file all'API (file js) che restituisce i dettagli-->
+<script type="text/javascript">
+    
+
+//AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
+const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+axios.get("/api/InstrumentApi/"+ id).then((res) => {
+                let instrument = res.data;
+                console.log('strumento visualizzato', instrument);
+                
+
+                document.getElementById('instrument_container').innerHTML +=
+                    `
+                        <div class="col-12 col-md-4 p-2">
+                              <div class="card-body  h-100">
+                                                <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+                                    <div class="card-body">
+                                    <h5 class="card-title">${instrument.name}</h5>
+                                            <p class="card-text">${instrument.description}</p>
+                                            <p class="card-text">${instrument.price}</p>
+                                    </div>
+                            </div>
+                        </div>
+                    `;
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

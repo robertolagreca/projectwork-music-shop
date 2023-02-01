@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopStrumentiMusicali.Database;
 
@@ -11,9 +12,11 @@ using ShopStrumentiMusicali.Database;
 namespace ShopStrumentiMusicali.Migrations
 {
     [DbContext(typeof(ParamusicContext))]
-    partial class ParamusicContextModelSnapshot : ModelSnapshot
+    [Migration("20230130173705_AggiuntaDiPriceAInstrument")]
+    partial class AggiuntaDiPriceAInstrument
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,12 +266,6 @@ namespace ShopStrumentiMusicali.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserLikes")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

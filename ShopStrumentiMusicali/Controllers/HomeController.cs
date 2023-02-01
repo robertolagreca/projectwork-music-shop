@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using ShopStrumentiMusicali.Database;
 using ShopStrumentiMusicali.Models;
 using System.Diagnostics;
 
@@ -13,14 +16,31 @@ namespace ShopStrumentiMusicali.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
+        public IActionResult Index() {
+
+            using (ParamusicContext db = new ParamusicContext()) {
+                List<Instrument> instrumentsList = db.Instruments.ToList<Instrument>();
+                return View("Index", instrumentsList);
+            }
+
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
+        public IActionResult Details(int id) {
+            using (ParamusicContext db = new ParamusicContext()) {
+
+                Instrument instrumentFound = db.Instruments
+                    .Where(singleInstrument => singleInstrument.Id == id)
+                    .Include(instrument => instrument.Category)
+                    .FirstOrDefault();
+
+                if (instrumentFound != null) {
+                    return View(instrumentFound);
+                }
+
+                return NotFound("Lo strumento con l'id cercato non esiste!");
+
+            }
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
