@@ -1,0 +1,59 @@
+﻿<!--@@page
+@@model ShopStrumentiMusicali.Views.Administration.UpdateModel -->
+<!-- Da inserire @@model da inserire il controller-->
+@model InstrumentCategoriesView
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="d-flex align-items-center">
+    <h1 class="text-danger">Modifica strumento</h1>
+</div>
+
+<form asp-controller="Administration" asp-action="Update" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3 form-check">
+        <label>Id:</label>
+        <input asp-for="Instrument.Id" type="text" class="form-control" disabled />
+    </div>
+
+
+
+    <div class="mb-3 form-check">
+        <label>Nome:</label>
+        <input asp-for="Instrument.Name" type="text" class="form-control" disabled />
+  
+    </div>
+
+    <div class="mb-3 form-check">
+        <label>Descrizione:</label>
+        <textarea asp-for="Instrument.Description" rows="10" class="d-block w-100" disabled></textarea>
+      
+    </div>
+
+    <div class="mb-3 form-check">
+        <label>Prezzo:</label>
+        <input asp-for="Instrument.Price" type="text" class="form-control" disabled />
+        
+    </div>
+
+    <!--Da sistemare sicuro in base la categoria-->
+    <div class="mb-3 form-check">
+        <label>Categoria:</label>
+        <input asp-for="Instrument.CategoryID" type="text" class="form-control" disabled/>
+    </div>
+    <div class="mb-3 form-check">
+        <label>Quantita:</label>
+        <input asp-for="Instrument.Quantity" type="text" class="form-control"/>
+        <span asp-validation-for="Instrument.Quantity" class="text-danger"></span>
+    </div>
+
+    <!--Bottone per salvare acquisti-->
+    <div class="d-grid justify-content-end">
+        <button type="submit" class="btn btn-primary btn-danger" formmethod="post">Acquista</button>
+    </div>
+
+</form>
