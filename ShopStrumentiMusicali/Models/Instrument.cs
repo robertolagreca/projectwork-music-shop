@@ -20,7 +20,7 @@ namespace ShopStrumentiMusicali.Models
         [StringLength(300, ErrorMessage = "Image URL cannot be longer than 300 characters.")]
         public string ImageURL { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
 
 		[Column(TypeName = "int")]
 		[Range(0,500000, ErrorMessage = "Invalid value for stock quantity")]
@@ -29,7 +29,7 @@ namespace ShopStrumentiMusicali.Models
 		[Column(TypeName = "int")]
 		[Range(0, 500000, ErrorMessage = "Invalid value for user likes")]
 		public int? UserLikes { get; set; }
-
+        public string? State { get; set; }
         public int CategoryID { get; set; }
         public Category? Category { get; set; }
 

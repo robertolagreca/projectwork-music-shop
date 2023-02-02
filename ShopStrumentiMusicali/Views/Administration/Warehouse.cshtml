@@ -31,6 +31,17 @@
                             <td class="p-1 border-1 border-dark border-bottom">@instrument.Id</td>
                             <td class="title p-1 border-1 border-dark border-bottom">@instrument.Name</td>
                             <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.Quantity</td>
+                            @if (instrument.Quantity <= 10)
+                            {
+                                <td class="quantity p-1 border-1 border-dark text-danger border-bottom">@instrument.State</td>
+                            }
+                            else
+                            {
+                                <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.State</td>
+                            }
+
+                                
+                         
                         </tr>
                     }
                 </tbody>

@@ -15,17 +15,33 @@ namespace ShopStrumentiMusicali.Controllers {
             }
    
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Warehouse() {
 
             using (ParamusicContext db = new ParamusicContext()) {
-                List<Instrument> instrumentsList = db.Instruments.ToList<Instrument>();
+                List<Instrument> instrumentsList = db.Instruments.OrderBy(ins => ins.Quantity).ToList<Instrument>();
+                foreach(Instrument ins in instrumentsList)
+                {
+                    if(ins.Quantity <= 10)
+                    {
+                        ins.State = "Da ordinare";
+                    }
+                    if (ins.Quantity == 0)
+                    {
+                        ins.State = "Esaurito";
+                    }
+                    if (ins.Quantity >= 10)
+                    {
+                        ins.State = "Disponibile";
+                    }
+                }
                 return View("Warehouse", instrumentsList);
             }
 
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create() {
             using (ParamusicContext db = new ParamusicContext())
             {
@@ -58,6 +74,7 @@ namespace ShopStrumentiMusicali.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(InstrumentCategoriesView formData) {
 
             if (!ModelState.IsValid) {
@@ -85,6 +102,7 @@ namespace ShopStrumentiMusicali.Controllers {
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id) {
             using (ParamusicContext db = new ParamusicContext()) {
                 Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
@@ -109,6 +127,7 @@ namespace ShopStrumentiMusicali.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id, InstrumentCategoriesView formData)
         {
             if (!ModelState.IsValid)
