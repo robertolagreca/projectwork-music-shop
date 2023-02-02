@@ -8,10 +8,11 @@
     Layout = "_Layout";
 }
 
-
+<div class="container bg-white rounded p-3">
 <div class="d-flex align-items-center">
-    <h1 class="text-danger">Modifica strumento</h1>
+    <h1 class="text-dark">Modifica strumento</h1>
 </div>
+
 
 <form asp-controller="Administration" asp-action="Update" method="post">
     @Html.AntiForgeryToken()
@@ -81,3 +82,4 @@
     </div>
 
 </form>
+</div>

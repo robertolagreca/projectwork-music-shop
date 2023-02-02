@@ -16,6 +16,15 @@ namespace ShopStrumentiMusicali.Controllers {
    
         }
 
+        public IActionResult Warehouse() {
+
+            using (ParamusicContext db = new ParamusicContext()) {
+                List<Instrument> instrumentsList = db.Instruments.ToList<Instrument>();
+                return View("Warehouse", instrumentsList);
+            }
+
+        }
+
         [HttpGet]
         public IActionResult Create() {
             using (ParamusicContext db = new ParamusicContext())

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model List<Instrument>
+
+<div class="container">
+    <div class="row justify-content-center d-flex">
+        <div class="col-md-6">
+            <br> <br>
+        </div>
+    </div>
+    <div class="row justify-content-center d-flex">
+        <div class="col-12 bg-white rounded">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="p-2 mb-2 border-3 border-dark border-top">Magazzino</h1>
+            </div>
+
+            <table class="table post-list-table table-borderless">
+                <thead>
+                    <tr class="p-1 border-1 border-dark border-bottom">
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Quantità</th>
+                        <th>Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Instrument instrument in Model) {
+                        <tr>
+                            <td class="p-1 border-1 border-dark border-bottom">@instrument.Id</td>
+                            <td class="title p-1 border-1 border-dark border-bottom">@instrument.Name</td>
+                            <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.Quantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

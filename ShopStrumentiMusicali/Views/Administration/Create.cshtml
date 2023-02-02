@@ -5,11 +5,13 @@
 }
 
 
-<div class="d-flex align-items-center">
-	<h1 class="text-danger">Aggiungere strumento</h1>
-</div>
 
-<div class="container">
+
+<div class="container bg-white rounded p-3">
+	<div class="d-flex align-items-center">
+	<h1 class="text-dark">Aggiungere strumento</h1>
+	</div>
+</div>
 	<form asp-controller="Administration" asp-action="Create" method="post">
 		@Html.AntiForgeryToken()
 
@@ -56,6 +58,12 @@
 			<span asp-validation-for="Instrument.CategoryID" class="text-danger"></span>
 			</div>
 
+		<div class="d-grid justify-content-end">
+			<button type="submit" class="btn btn-info">Salva</button>
+		</div>
+	</form>
+</div>
+
 		<!--Da sistemare sicuro in base allo shop transaction-->
 		<!-- 	 <div class="mb-3 form-check">
 				<label>Fornitore:</label>
@@ -70,13 +78,6 @@
 			</div>-->
 
 		<!--Bottone salva-->
+	
 
-		<button type="submit" class="btn btn-info">Salva</button>
 
-		<div class="d-grid justify-content-end">
-			
-		</div>
-
-	</form>
-
-</div>
