@@ -33,7 +33,7 @@
                             <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.Quantity</td>
                             @if (instrument.Quantity <= 10)
                             {
-                                <td class="quantity p-1 border-1 border-dark text-danger border-bottom">@instrument.State</td>
+                                <td class="quantity p-1 border-1 border-dark text-danger border-bottom">@instrument.State<a class="btn btn-primary btn-danger p-1" href="@Url.Action("Resupply", "Administration")">Rifornisci</a></td> 
                             }
                             else
                             {
