@@ -98,6 +98,48 @@ namespace ShopStrumentiMusicali.Controllers {
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, InstrumentCategoriesView formData)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                using (ParamusicContext db = new ParamusicContext())
+                {
+                    List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+                    //List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+
+                    formData.Categories = categoriesFromDb;
+                }
+
+                return View("Update", formData);
+            }
+
+            using (ParamusicContext db = new ParamusicContext())
+            {
+
+                Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+
+                if (instrumentToUpdate != null)
+                {
+                    instrumentToUpdate.Name = formData.Instrument.Name;
+                    instrumentToUpdate.Description = formData.Instrument.Description;
+                    instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
+                    instrumentToUpdate.CategoryID = formData.Instrument.CategoryID;
+                    instrumentToUpdate.Price = formData.Instrument.Price;
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("IndexAdm");
+                }
+                else
+                {
+                    return NotFound("Lo strumento che volevi modificare non è stato trovato!");
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult Purchase(int id)
         {
@@ -123,9 +165,11 @@ namespace ShopStrumentiMusicali.Controllers {
 
         }
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, InstrumentCategoriesView formData) {
+        public IActionResult Purchase(int id, InstrumentCategoriesView formData) {
             if (!ModelState.IsValid) {
 
                 using (ParamusicContext db = new ParamusicContext()) {
@@ -135,7 +179,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     formData.Categories = categoriesFromDb;
                 }
 
-                return View("Update", formData);
+                return View("Purchase", formData);
             }
 
             using (ParamusicContext db = new ParamusicContext()) {
@@ -148,6 +192,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
                     instrumentToUpdate.CategoryID = formData.Instrument.CategoryID;
                     instrumentToUpdate.Price = formData.Instrument.Price;
+                    instrumentToUpdate.Quantity= instrumentToUpdate.Quantity - formData.Instrument.Quantity;
 
                     db.SaveChanges();
 

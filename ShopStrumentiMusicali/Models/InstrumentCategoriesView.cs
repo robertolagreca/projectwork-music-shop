@@ -11,6 +11,7 @@ namespace ShopStrumentiMusicali.Models
         public List<Category>? Categories { get; set; }
 
         public List<ShopTransaction>? ShopTransactions { get; set; }
+		public List<UserTransaction>? UserTransactions { get; set; }
 
     }
 }
