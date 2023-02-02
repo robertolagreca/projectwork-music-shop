@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body>
+<body class="pb-0 mb-0">
 
 
 
@@ -26,10 +26,11 @@
     <nav class="navbar navbar-dark bg-dark static-top">
         <div class="container-fluid">
             <!--Logo Navbar-->
-            <img src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="6%" height="2%"
-                 class="d-inline-block">
+            <a asp-area="" asp-controller="Home" asp-action="Index" alt="Logo" width="6%" height="2%">
+            <img class="d-inline-block" src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" asp-area="" asp-controller="Home" asp-action="Index" alt="Logo" width="20%" height="10%">
+            </a>
             <!--Titolo centrale-->
-            <p class="navbar-brand d-flex justify-content-center ms-5 ps-5 my-0 fs-2 fw-bold">ParaMusic Instrument Store</p>
+            <p class="navbar-brand d-flex justify-content-center ps-0 pe-4 me-4 fs-2 fw-bold">ParaMusic Instrument Store</p>
             <div class="">
                 <!--Bottoni login Registrati-->
                 @if (SignInManager.IsSignedIn(User))
@@ -48,10 +49,10 @@
 
 
 
-                    <a class="btn btn-success" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                    <a class="btn btn-warning" id="register" asp-area="Identity" asp-page="/Account/Register">Registrati</a>
+                    <a class="btn btn-success ms-5" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <a class="btn btn-warning ms-4" id="register" asp-area="Identity" asp-page="/Account/Register">Registrati</a>
                 }
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                <button class="navbar-toggler ms-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                         aria-controls="offcanvasDarkNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
