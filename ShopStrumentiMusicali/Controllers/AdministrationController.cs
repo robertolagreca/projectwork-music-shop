@@ -141,6 +141,7 @@ namespace ShopStrumentiMusicali.Controllers {
         }
 
         [HttpGet]
+        [Authorize(Roles = "Cliente")]
         public IActionResult Purchase(int id)
         {
             using (ParamusicContext db = new ParamusicContext())
@@ -169,6 +170,7 @@ namespace ShopStrumentiMusicali.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Cliente")]
         public IActionResult Purchase(int id, InstrumentCategoriesView formData) {
             if (!ModelState.IsValid) {
 
@@ -231,5 +233,97 @@ namespace ShopStrumentiMusicali.Controllers {
                 }
             }
         }
-    }
+
+
+
+
+		[HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Resupply(int id)
+		{
+			using (ParamusicContext db = new ParamusicContext())
+			{
+				Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+
+				if (instrumentToUpdate == null)
+				{
+					return NotFound("Lo strumento non è stato trovato");
+				}
+
+				List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+
+				InstrumentCategoriesView formData = new InstrumentCategoriesView();
+
+
+				formData.Instrument = instrumentToUpdate;
+				formData.Categories = categoriesFromDb; // non mi serve
+
+				return View("Resupply", formData);
+			}
+
+		}
+
+
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Resupply(int id, InstrumentCategoriesView formData)
+		{
+			if (!ModelState.IsValid)
+			{
+
+				using (ParamusicContext db = new ParamusicContext())
+				{
+					List<Category> categoriesFromDb = db.Categories.ToList<Category>();
+					//List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+
+					formData.Categories = categoriesFromDb;
+				}
+
+				return View("Resupply", formData);
+			}
+
+
+
+
+			using (ParamusicContext db = new ParamusicContext())
+			{
+
+				Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+				int qtadd = (int)instrumentToUpdate.Quantity;
+
+
+
+
+				ShopTransaction shopTransaction = new();
+
+				if (instrumentToUpdate != null)
+				{
+					instrumentToUpdate.Quantity = qtadd + formData.Quantity;
+                    shopTransaction.InstrumentID = (int)instrumentToUpdate.Id;
+                    shopTransaction.TransactionDate = DateTime.Now;
+                    shopTransaction.TransactionQuantity = formData.Quantity;
+                    shopTransaction.SupplierName = formData.Supplier;
+                    shopTransaction.TransactionFee = formData.Quantity * instrumentToUpdate.Price;
+
+
+
+
+					db.ShopTransactions.Add(shopTransaction);
+					db.SaveChanges();
+
+					return RedirectToAction("IndexAdm");
+				}
+				else
+				{
+					return NotFound("Lo strumento che volevi modificare non è stato trovato!");
+				}
+			}
+		}
+
+
+
+
+	}
 }

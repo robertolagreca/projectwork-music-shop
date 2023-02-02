@@ -207,8 +207,15 @@
                                                      <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
                                                     @if (User.Identity.IsAuthenticated)
                                                     {
-                                                    <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
-                                                     }else{
+                                                        @if (User.IsInRole("Cliente"))
+                                                        {
+                                                            <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
+                                                        }
+                                                            @if (User.IsInRole("Admin"))
+                                                            {
+                                                             <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
+                                                            }
+                                                    }else{
                                                      <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
                                                      }
                                             </div>

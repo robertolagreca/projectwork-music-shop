@@ -1,0 +1,33 @@
+﻿@model InstrumentCategoriesView
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="d-flex align-items-center">
+    <h1 class="text-white">Rifornisci strumento</h1>
+</div>
+
+<form asp-controller="Administration" asp-action="Resupply" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3 form-check">
+        <label>Fornitore:</label>
+        <input asp-for="Supplier" type="text" class="form-control" />
+        <span asp-validation-for="Supplier" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-check">
+        <label>Quantita:</label>
+        <input asp-for="Quantity" type="text" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+
+    <!--Bottone per salvare acquisti-->
+    <div class="d-grid justify-content-end">
+        <button type="submit" class="btn btn-primary btn-danger" formmethod="post">Acquista</button>
+    </div>
+
+</form>
