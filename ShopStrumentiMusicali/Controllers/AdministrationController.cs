@@ -29,7 +29,7 @@ namespace ShopStrumentiMusicali.Controllers {
                 //List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
 
                 modelForView.Categories = categoriesFromDb;
-                modelForView.ShopTransactions = shopTransactionsFromDb;
+              //  modelForView.ShopTransactions = shopTransactionsFromDb;
                 return View("Create", modelForView);
             }
         }
@@ -56,11 +56,11 @@ namespace ShopStrumentiMusicali.Controllers {
 
                 using (ParamusicContext db = new ParamusicContext()) {
                     List<Category> categoriesFromDb = db.Categories.ToList<Category>();
-					List<ShopTransaction> transactions = db.ShopTransactions.ToList<ShopTransaction>();
-					//List<Category> selectList = CategoriesToSelectList(categoriesFromDb);
+					
+					
 
 					formData.Categories = categoriesFromDb;
-                    formData.ShopTransactions = transactions;
+                    
                 }
 
 
@@ -154,13 +154,13 @@ namespace ShopStrumentiMusicali.Controllers {
 
                 List<Category> categoriesFromDb = db.Categories.ToList<Category>();
 
-                InstrumentCategoriesView modelForView = new InstrumentCategoriesView();
+                InstrumentCategoriesView formData = new InstrumentCategoriesView();
 
 
-                modelForView.Instrument = instrumentToUpdate;
-                modelForView.Categories = categoriesFromDb;
+                formData.Instrument = instrumentToUpdate;
+                formData.Categories = categoriesFromDb; // non mi serve
 
-                return View("Purchase", modelForView);
+                return View("Purchase", formData);
             }
 
         }
@@ -182,18 +182,27 @@ namespace ShopStrumentiMusicali.Controllers {
                 return View("Purchase", formData);
             }
 
+            
+            
+
             using (ParamusicContext db = new ParamusicContext()) {
                 
                 Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+                int qtsub = (int)instrumentToUpdate.Quantity;
+
+				instrumentToUpdate.Quantity = qtsub - formData.Quantity;
+
+                
+                UserTransaction userTransaction = new UserTransaction();
 
                 if (instrumentToUpdate != null) {
-                    instrumentToUpdate.Name = formData.Instrument.Name;
-                    instrumentToUpdate.Description = formData.Instrument.Description;
-                    instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
-                    instrumentToUpdate.CategoryID = formData.Instrument.CategoryID;
-                    instrumentToUpdate.Price = formData.Instrument.Price;
-                    instrumentToUpdate.Quantity= instrumentToUpdate.Quantity - formData.Instrument.Quantity;
-
+                    userTransaction.TransactionDate = DateTime.Now;
+                    userTransaction.TransactionQuantity = formData.Quantity;
+                    
+                    
+                    
+                    
+                    db.UserTransactions.Add(userTransaction);
                     db.SaveChanges();
 
                     return RedirectToAction("IndexAdm");

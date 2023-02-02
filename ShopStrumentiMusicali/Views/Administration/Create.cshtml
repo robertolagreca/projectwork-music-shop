@@ -51,17 +51,17 @@
 			</div>
 
 		<!--Da sistemare sicuro in base allo shop transaction-->
-		 <div class="mb-3 form-check">
+		<!-- 	 <div class="mb-3 form-check">
 				<label>Fornitore:</label>
 			<select asp-for="Instrument.ShopTransactions" rows="10" class="d-block w-100" aria-label="shoptransaction">
 					<option value=""></option>
-					@foreach (ShopTransaction supply in Model.ShopTransactions)
+					@@foreach (ShopTransaction supply in Model.ShopTransactions)
 					{
-						<option value="@supply.Id">@supply.SupplierName</option>
+						<option value="@@supply.Id">@@supply.SupplierName</option>
 					}
 				</select>
 			<span asp-validation-for="Instrument.ShopTransactions" class="text-danger"></span>
-			</div>
+			</div>-->
 
 		<!--Bottone salva-->
 
