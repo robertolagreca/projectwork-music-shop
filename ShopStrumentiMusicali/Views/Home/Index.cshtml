@@ -200,10 +200,11 @@
                                                       <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
                                             <div class="card-body">
 
-                                            <h5 class="card-title">${instrument.name}</h5>
-                                                    <p class="card-text">${instrument.description}</p>
+                                            <h5 class="card-title">Nome: ${instrument.name}</h5>
+                                                    <p class="card-text">Descrizione: ${instrument.description}</p>
 
-                                                    <p class="card-text">${instrument.price}</p>
+                                                    <p class="card-text">Prezzo: ${instrument.price}</p>
+                                                    <p class="card-text">Quantita: ${instrument.quantity}</p>
                                                      <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
                                                     @if (User.Identity.IsAuthenticated)
                                                     {

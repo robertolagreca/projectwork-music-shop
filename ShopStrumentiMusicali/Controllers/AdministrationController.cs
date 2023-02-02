@@ -209,7 +209,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     db.UserTransactions.Add(userTransaction);
                     db.SaveChanges();
 
-                    return RedirectToAction("IndexAdm");
+                    return RedirectToAction("Index","Home");
                 } else {
                     return NotFound("Lo strumento che volevi modificare non è stato trovato!");
                 }
