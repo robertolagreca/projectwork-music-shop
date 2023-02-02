@@ -190,18 +190,19 @@ namespace ShopStrumentiMusicali.Controllers {
                 Instrument instrumentToUpdate = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
                 int qtsub = (int)instrumentToUpdate.Quantity;
 
-				instrumentToUpdate.Quantity = qtsub - formData.Quantity;
 
-                
-                UserTransaction userTransaction = new UserTransaction();
+
+
+                UserTransaction userTransaction = new();
 
                 if (instrumentToUpdate != null) {
-                    userTransaction.TransactionDate = DateTime.Now;
+					instrumentToUpdate.Quantity = qtsub - formData.Quantity;
+					userTransaction.TransactionDate = DateTime.Now;
                     userTransaction.TransactionQuantity = formData.Quantity;
                     
                     
                     
-                    
+                   
                     db.UserTransactions.Add(userTransaction);
                     db.SaveChanges();
 
