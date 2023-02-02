@@ -197,6 +197,7 @@ namespace ShopStrumentiMusicali.Controllers {
 
                 if (instrumentToUpdate != null) {
 					instrumentToUpdate.Quantity = qtsub - formData.Quantity;
+                    userTransaction.InstrumentID = (int)instrumentToUpdate.Id;
 					userTransaction.TransactionDate = DateTime.Now;
                     userTransaction.TransactionQuantity = formData.Quantity;
                     

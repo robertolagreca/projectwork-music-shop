@@ -8,8 +8,8 @@ namespace ShopStrumentiMusicali.Models
 
     public class UserTransaction
     {
-		
-		public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
 
         [Column(TypeName="date")]
         public DateTime? TransactionDate { get; set; }
