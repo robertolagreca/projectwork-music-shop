@@ -5,12 +5,21 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<!--<h1>@@ViewData["Title"]</h1>-->
+
+<div class="container-fluid">
+     <div class="row justify-content-center d-flex">
+        <div class="col-md-6">
+            <br> <br>
+        </div>
+    </div>
+
 <div class="row justify-content-center d-flex">
     <div class="col-md-6 bg-white rounded-top">
+            <h1 class="text-center text-black">Log in</h1>
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>Use a registered account.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -83,6 +92,7 @@
             }
         }
     </section>
+</div>
 </div>
 </div>
 @section Scripts {
