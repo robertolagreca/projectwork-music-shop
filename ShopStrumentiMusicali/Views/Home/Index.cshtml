@@ -143,8 +143,13 @@
 
 <script type="text/javascript">
 
+    
 
     loadInstruments();
+
+    function Like(id) {
+        axios.post("/api/InstrumentApi")
+    }
 
     function loadInstruments() {
         axios.get('/api/InstrumentApi/').then((res) => {
@@ -152,8 +157,6 @@
             //let instrument = res.data;
 
             console.log('strumento visualizzato', res);
-
-            var buttons = [];
 
 
             if (res.data.length == 0) {
@@ -205,9 +208,9 @@
                                                      <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
                                                      }
                                                          <p class="card-text">Likes: ${instrument.userLikes}</p>
-                                                          <button id="toggle-button${instrument.id}" class="liked" type="button">
-                                                         <i class="fa fa-thumbs-up"></i> Like
-                                                          </button>
+                                                                  <button class="toggle-button${instrument.id}" type="button">
+                                                                    Like<i class="fa fa-thumbs-up"></i>
+                                                              </button>
                                                           <span id="like-count${instrument.id}"></span>
 
                                             </div>
@@ -216,61 +219,64 @@
                                 </div>
                             `;
 
-                    var toggleButton = document.getElementById("toggle-button" + instrument.id);
-                    buttons.push(toggleButton);
-                    var likeCount = document.getElementById("like-count" + instrument.id);
-                    console.log("prima");
-                    console.log(toggleButton);
-                    //const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-                    
-                    debugger;
-
-                    toggleButton.addEventListener("click", function () {
-                        toggleButton.classList.toggle("liked");
-                        console.log("dopo");
-
-                        if (toggleButton.classList.contains("liked")) {
-                            incrementLike();
-                            instrument.userLikes++;
-                        } else {
-                            decrementLike();
-                            instrument.userLikes--;
-                        }
-                    });
-
-                    async function incrementLike() {
+                    /*
+                    async function incrementLike(let id) {
                       try {
                             const response = await axios.post(`/api/InstrumentApi/increment${instrument.id}`);
                         likeCount.innerHTML = response.data.likeCount;
+                        return 
                       } catch (error) {
                         console.error(error);
                       }
                     }
 
-                    async function decrementLike() {
+                    async function decrementLike(let id) {
                       try {
                         const response = await axios.post(`/api/InstrumentApi/decrement${instrument.id}`);
                         likeCount.innerHTML = response.data.likeCount;
                       } catch (error) {
                         console.error(error);
                       }
-                    }
+                    }*/
+
+                    debugger;
+
+                    
 
                 });
+
+
+                
             }
 
-
+            
         });
 
-
-       
-
+        
        
 
 
 
     }
 
+    axios.get('/api/InstrumentApi/').then((res) => {
+    
+        res.data.forEach(instrument => {
+        document.querySelector(`.toggle-button${instrument.id}`).addEventListener("click", function () {
+            console.log("Dentro: " + instrument.userLikes);
+            document.querySelector(`.toggle-button${instrument.id}`).classList.toggle("liked");
+            if (!document.querySelector(`.toggle-button${instrument.id}`).classList.contains("liked")) {
+                instrument.userLikes--;
+            }
+            else {
+                instrument.userLikes++;
+            }
+            document.querySelector(`.toggle-button${instrument.id}`).innerHTML = instrument.userLikes + " Like";
+        });
+
+        });
+    });
+    
     
 </script>
 

@@ -42,6 +42,18 @@ namespace ShopStrumentiMusicali.Controllers {
 
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Like(int id, [FromBody]Instrument instrument)
+        {
+            using (ParamusicContext db = new ParamusicContext())
+            {
+                Instrument instrumentFromDb = db.Instruments.Where(instrument => instrument.Id == instrument.Id).FirstOrDefault();
+                instrumentFromDb.UserLikes = instrument.UserLikes;
+                db.SaveChanges();
+                return Ok(instrument.UserLikes);
+            }
+        }
+
 
 
         [HttpPost("increment")]
