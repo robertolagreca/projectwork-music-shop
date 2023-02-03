@@ -52,3 +52,13 @@
 .background-login {
     background-color: rgb(192, 192, 192);
 }
+
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .fa:hover {
+        color: darkblue;
+    }

@@ -151,13 +151,13 @@
             "userLikes": userLikes
         }
         axios.patch(`/api/instrumentApi/${id}`, requestBody);
-            //.then(response => element.innerHTML = response.data.updatedAt);
+        
     }
 
     function loadInstruments() {
         axios.get('/api/instrumentApi/').then((res) => {
 
-            //let instrument = res.data;
+          
 
             console.log('strumento visualizzato', res);
 
@@ -174,8 +174,7 @@
 
 
 
-                //document.getElementById('.js_instrument_table').classList.remove('d-none');
-                // document.getElementById('.js_no_instrument').classList.add('d-none');
+                
 
                 document.getElementById('js_instrument_table').innerHTML = '';
 
@@ -214,6 +213,8 @@
     }
                                                              <br/>
                                                                   <br/>
+                                                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                                      
                                                                       <button class="toggle-button${instrument.id}" type="button">
                                                                         Like<i class="fa fa-thumbs-up"></i>
                                                                   </button>
@@ -223,29 +224,9 @@
                                         </div>
                                     </div>
                                     </div>
-                                `;
+                        `;
 
-                    /*
-                    async function incrementLike(let id) {
-                      try {
-                            const response = await axios.post(`/api/InstrumentApi/increment${instrument.id}`);
-                        likeCount.innerHTML = response.data.likeCount;
-                        return
-                      } catch (error) {
-                        console.error(error);
-                      }
-                    }
-
-                    async function decrementLike(let id) {
-                      try {
-                        const response = await axios.post(`/api/InstrumentApi/decrement${instrument.id}`);
-                        likeCount.innerHTML = response.data.likeCount;
-                      } catch (error) {
-                        console.error(error);
-                      }
-                    }*/
-
-                    //debugger;
+                
 
 
 
@@ -274,6 +255,10 @@
 
         });
     }
+
+   
+        
+
 
 
 </script>
