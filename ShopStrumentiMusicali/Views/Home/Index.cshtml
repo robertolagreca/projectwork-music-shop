@@ -1,7 +1,6 @@
 ﻿<!-- @@{
     ViewData["Title"] = "Home Page";
 } -->
-
 @{
     Layout = "_Layout";
 }
@@ -10,113 +9,113 @@
 <!--Carousel index-->
 @if (!User.Identity.IsAuthenticated)
 {
-<div class="container-fluid carousel-background">
-    <div class="row">
-        <div class="col"></div>
-        <div id="carouselExampleAutoplaying" class="carousel slide col my-3" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="2500">
-                    <img src="https://www.informusic.it/wp-content/uploads/2020/10/miglior-violino.jpg" class="d-block w-100"
+    <div class="container-fluid carousel-background">
+        <div class="row">
+            <div class="col"></div>
+            <div id="carouselExampleAutoplaying" class="carousel slide col my-3" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="2500">
+                        <img src="https://www.informusic.it/wp-content/uploads/2020/10/miglior-violino.jpg" class="d-block w-100"
                          alt="...">
-                </div>
-                <div class="carousel-item" data-bs-interval="2500">
-                    <img src="https://www.raiscuola.rai.it/dl/img/2021/03/24/1616586033732_1584444217498_fotoMusica2020.jpg"
-                         class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item" data-bs-interval="2500">
-                    <img src="https://spettacolo.com/media/catalog/category/arredamento-music-store-pannelli-dogato-bianco-SPETTACOLO-Shop-For-Store-min.jpg"
-                         class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <div class="col"></div>
-    </div>
-</div>
-
-
-<div class="container-fluid mt-2 mb-5">
-    <div class="row mx-5">
-        <div class="card col-12 border-arrotondato vetrina-background p-0">
-            <div class="container-fluid text-end card-body p-0">
-                <div class="row">
-                    <div class="col-6">
-                        <p class="fs-2 fw-bolder mt-3">Il nostro Store:</p>
-                        <p class="fs-4 mt-3">
-                            Il nostro store nasce nel lontano 1988, fondato da Emanuele Paratore, grande musicista e intenditore di
-                            strumenti e composizione. Dopo un periodo di stanziamento a Busto Arsizio, il ParaMusic Store si è
-                            spostato a Milano,
-                            dove ha trovato un'accoglienza a dir poco calorosa! Da 30 anni, gran parte dei musicisti Lombardi
-                            scelgono ogni giorno il nostro store
-                            come punto di riferimento per attrezzature, strumenti, riparazioni e pareri tecnici!
-                        </p>
                     </div>
+                    <div class="carousel-item" data-bs-interval="2500">
+                        <img src="https://www.raiscuola.rai.it/dl/img/2021/03/24/1616586033732_1584444217498_fotoMusica2020.jpg"
+                         class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2500">
+                        <img src="https://spettacolo.com/media/catalog/category/arredamento-music-store-pannelli-dogato-bianco-SPETTACOLO-Shop-For-Store-min.jpg"
+                         class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
 
-                    <div class="col-6">
-                        <img class="border-destro img-fluid"
+
+    <div class="container-fluid mt-2 mb-5">
+        <div class="row mx-5">
+            <div class="card col-12 border-arrotondato vetrina-background p-0">
+                <div class="container-fluid text-end card-body p-0">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fs-2 fw-bolder mt-3">Il nostro Store:</p>
+                            <p class="fs-4 mt-3">
+                                Il nostro store nasce nel lontano 1988, fondato da Emanuele Paratore, grande musicista e intenditore di
+                                strumenti e composizione. Dopo un periodo di stanziamento a Busto Arsizio, il ParaMusic Store si è
+                                spostato a Milano,
+                                dove ha trovato un'accoglienza a dir poco calorosa! Da 30 anni, gran parte dei musicisti Lombardi
+                                scelgono ogni giorno il nostro store
+                                come punto di riferimento per attrezzature, strumenti, riparazioni e pareri tecnici!
+                            </p>
+                        </div>
+
+                        <div class="col-6">
+                            <img class="border-destro img-fluid"
                              src="https://production-cdn.momento360.com/e/u/8fa1e6e782c04ab7bc480084598a99d9/sphere/preview"
                              alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid my-5">
-    <div class="row mx-5">
-        <div class="card col-12 border-arrotondato vetrina-background p-0">
-            <div class="container-fluid card-body text-start p-0">
-                <div class="row">
-                    <div class="col-6">
+    <div class="container-fluid my-5">
+        <div class="row mx-5">
+            <div class="card col-12 border-arrotondato vetrina-background p-0">
+                <div class="container-fluid card-body text-start p-0">
+                    <div class="row">
+                        <div class="col-6">
                             <img class="border-sinistro img-fluid" src="https://americanbach.org/assets/images/horn-1600x800-800x400.jpg" alt="">
-                    </div>
+                        </div>
 
-                    <div class="col-6">
-                        <p class="fs-2 fw-bolder mt-3">I nostri strumenti:</p>
-                        <p class="fs-4 mt-3">
-                            Gli strumenti di ParaMusic sono tutti certificati secondo le normative EU. Ogni strumento viene infatti realizzato a mano
-                            con la cura dei minimi dettagli, per poter garantire il massimo della qualità del vostro sound! Ogni strumento è testato dal nostro personale
-                            tramite strumentazioni avanzatissime, per garantire un ulteriore controllo di qualità al nostro cliente!
-                        </p>
+                        <div class="col-6">
+                            <p class="fs-2 fw-bolder mt-3">I nostri strumenti:</p>
+                            <p class="fs-4 mt-3">
+                                Gli strumenti di ParaMusic sono tutti certificati secondo le normative EU. Ogni strumento viene infatti realizzato a mano
+                                con la cura dei minimi dettagli, per poter garantire il massimo della qualità del vostro sound! Ogni strumento è testato dal nostro personale
+                                tramite strumentazioni avanzatissime, per garantire un ulteriore controllo di qualità al nostro cliente!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid my-5">
-    <div class="row mx-5">
-        <div class="card col-12 border-arrotondato vetrina-background p-0">
-            <div class="container-fluid text-end card-body p-0">
-                <div class="row">
-                    <div class="col-6">
-                        <p class="fs-2 fw-bolder mt-3">Il nostro usato Garantito:</p>
-                        <p class="fs-4 mt-3">
-                            L' usato di ParaMusic non ha eguali! Prima ancora di accettare materiale usato, infatti, il nostro personale si impegna per testare
-                            ogni singolo strumento, suonando e sottoponendolo ad un accurato esame strumentale, visivo e sonoro! Acquistare uno strumento usato è il modo migliore per
-                            risparmiare e avere fra le mani un piccolo pezzo di storia!
-                        </p>
-                    </div>
+    <div class="container-fluid my-5">
+        <div class="row mx-5">
+            <div class="card col-12 border-arrotondato vetrina-background p-0">
+                <div class="container-fluid text-end card-body p-0">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fs-2 fw-bolder mt-3">Il nostro usato Garantito:</p>
+                            <p class="fs-4 mt-3">
+                                L' usato di ParaMusic non ha eguali! Prima ancora di accettare materiale usato, infatti, il nostro personale si impegna per testare
+                                ogni singolo strumento, suonando e sottoponendolo ad un accurato esame strumentale, visivo e sonoro! Acquistare uno strumento usato è il modo migliore per
+                                risparmiare e avere fra le mani un piccolo pezzo di storia!
+                            </p>
+                        </div>
 
-                    <div class="col-6">
-                        <img class="border-destro img-fluid" src="https://cdn-resources.ableton.com/resources/filer_thumbnails/e5/49/e5498328-51aa-4344-ac84-9ac24ba8fd24/motors-magnets-motion_800x400_06.jpg__800x400_q85_crop_subsampling-2_upscale.jpg" alt="">
+                        <div class="col-6">
+                            <img class="border-destro img-fluid" src="https://cdn-resources.ableton.com/resources/filer_thumbnails/e5/49/e5498328-51aa-4344-ac84-9ac24ba8fd24/motors-magnets-motion_800x400_06.jpg__800x400_q85_crop_subsampling-2_upscale.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 }
 
@@ -143,16 +142,20 @@
 
 <script type="text/javascript">
 
-    
+
 
     loadInstruments();
 
-    function Like(id) {
-        axios.post("/api/InstrumentApi")
+    function likeClicked(id, userLikes) {
+        var requestBody = {
+            "userLikes": userLikes
+        }
+        axios.patch(`/api/instrumentApi/${id}`, requestBody);
+            //.then(response => element.innerHTML = response.data.updatedAt);
     }
 
     function loadInstruments() {
-        axios.get('/api/InstrumentApi/').then((res) => {
+        axios.get('/api/instrumentApi/').then((res) => {
 
             //let instrument = res.data;
 
@@ -182,49 +185,52 @@
 
                     document.getElementById('js_instrument_table').innerHTML +=
                         `       <div class="col-4">
-                                    <div class="card" style="width: 18rem;">
+                                        <div class="card" style="width: 18rem;">
 
-                                            <div class="card-image">
-                                                      <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
-                                            <div class="card-body">
+                                                <div class="card-image">
+                                                          <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+                                                <div class="card-body">
 
-                                            <h5 class="card-title">Nome: ${instrument.name}</h5>
-                                                    <p class="card-text">Descrizione: ${instrument.description}</p>
+                                                <h5 class="card-title">Nome: ${instrument.name}</h5>
+                                                        <p class="card-text">Descrizione: ${instrument.description}</p>
 
-                                                    <p class="card-text">Prezzo: ${instrument.price}</p>
-                                                    <p class="card-text">Quantita: ${instrument.quantity}</p>
-                                                     <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
-                                                    @if (User.Identity.IsAuthenticated)
-                                                    {
-                                                        @if (User.IsInRole("Cliente"))
-                                                        {
-                                                            <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
-                                                        }
-                                                            @if (User.IsInRole("Admin"))
-                                                            {
-                                                             <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
-                                                            }
-                                                    }else{
-                                                     <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
-                                                     }
-                                                         <p class="card-text">Likes: ${instrument.userLikes}</p>
-                                                                  <button class="toggle-button${instrument.id}" type="button">
-                                                                    Like<i class="fa fa-thumbs-up"></i>
-                                                              </button>
-                                                          <span id="like-count${instrument.id}"></span>
+                                                        <p class="card-text">Prezzo: ${instrument.price}</p>
+                                                        <p class="card-text">Quantita: ${instrument.quantity}</p>
+                                                         <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Cliente"))
+        {
+                                                                        <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+                                                                         <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
+        }
+    }
+    else
+    {
+                                                             <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
+    }
+                                                             <br/>
+                                                                  <br/>
+                                                                      <button class="toggle-button${instrument.id}" type="button">
+                                                                        Like<i class="fa fa-thumbs-up"></i>
+                                                                  </button>
+                                                              <span id="like-count${instrument.id}"></span>
 
-                                            </div>
+                                                </div>
+                                        </div>
                                     </div>
-                                </div>
-                                </div>
-                            `;
+                                    </div>
+                                `;
 
                     /*
                     async function incrementLike(let id) {
                       try {
                             const response = await axios.post(`/api/InstrumentApi/increment${instrument.id}`);
                         likeCount.innerHTML = response.data.likeCount;
-                        return 
+                        return
                       } catch (error) {
                         console.error(error);
                       }
@@ -239,47 +245,35 @@
                       }
                     }*/
 
-                    debugger;
+                    //debugger;
 
-                    
+
 
                 });
 
 
-                
+
             }
 
-            
+            res.data.forEach(instrument => {
+                document.querySelector(`.toggle-button${instrument.id}`).addEventListener("click", function () {
+                    console.log("Dentro: " + instrument.userLikes);
+                    document.querySelector(`.toggle-button${instrument.id}`).classList.toggle("liked");
+                    if (!document.querySelector(`.toggle-button${instrument.id}`).classList.contains("liked")) {
+                        instrument.userLikes--;
+                        likeClicked(instrument.id, instrument.userLikes);
+                    }
+                    else {
+                        instrument.userLikes++;
+                        likeClicked(instrument.id, instrument.userLikes);
+                    }
+                    document.querySelector(`.toggle-button${instrument.id}`).innerHTML = instrument.userLikes + " Like";
+                });
+
+            });
+
         });
-
-        
-       
-
-
-
     }
 
-    axios.get('/api/InstrumentApi/').then((res) => {
-    
-        res.data.forEach(instrument => {
-        document.querySelector(`.toggle-button${instrument.id}`).addEventListener("click", function () {
-            console.log("Dentro: " + instrument.userLikes);
-            document.querySelector(`.toggle-button${instrument.id}`).classList.toggle("liked");
-            if (!document.querySelector(`.toggle-button${instrument.id}`).classList.contains("liked")) {
-                instrument.userLikes--;
-            }
-            else {
-                instrument.userLikes++;
-            }
-            document.querySelector(`.toggle-button${instrument.id}`).innerHTML = instrument.userLikes + " Like";
-        });
 
-        });
-    });
-    
-    
 </script>
-
-   
-
-

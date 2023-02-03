@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ShopStrumentiMusicali.Database;
 using ShopStrumentiMusicali.Models;
+using ShopStrumentiMusicali.Models.DTOs;
 
 namespace ShopStrumentiMusicali.Controllers {
 
@@ -42,15 +43,20 @@ namespace ShopStrumentiMusicali.Controllers {
 
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Like(int id, [FromBody]Instrument instrument)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, [FromBody]InstrumentDto instrumentDto)
         {
             using (ParamusicContext db = new ParamusicContext())
             {
-                Instrument instrumentFromDb = db.Instruments.Where(instrument => instrument.Id == instrument.Id).FirstOrDefault();
-                instrumentFromDb.UserLikes = instrument.UserLikes;
+                Instrument instrumentFromDb = db.Instruments.Where(instrument => instrument.Id == id).FirstOrDefault();
+                if(instrumentFromDb is null)
+                {
+                    return BadRequest($"Instrument with id: {id} does not exist");
+                }
+
+                instrumentFromDb.UserLikes = instrumentDto.UserLikes;
                 db.SaveChanges();
-                return Ok(instrument.UserLikes);
+                return Ok(instrumentFromDb.UserLikes);
             }
         }
 
