@@ -37,13 +37,14 @@ namespace ShopStrumentiMusicali.Models
 
         public List<ShopTransaction>? ShopTransactions { get; set; }
 
-        public Instrument() { }
+        public Instrument() { UserLikes = 0; }
 
         public Instrument(string name, string description, string imageURL)
         {
             Name = name;
             Description = description;
             ImageURL = imageURL;
+            UserLikes= 0;
         }
     }
 }
