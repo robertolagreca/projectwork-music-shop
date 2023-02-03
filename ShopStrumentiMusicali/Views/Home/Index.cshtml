@@ -153,7 +153,7 @@
 
             console.log('strumento visualizzato', res);
 
-
+            var buttons = [];
 
 
             if (res.data.length == 0) {
@@ -205,10 +205,10 @@
                                                      <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
                                                      }
                                                          <p class="card-text">Likes: ${instrument.userLikes}</p>
-                                                          <button id="toggle-button" class="like">
+                                                          <button id="toggle-button${instrument.id}" class="liked" type="button">
                                                          <i class="fa fa-thumbs-up"></i> Like
                                                           </button>
-                                                          <span id="like-count"></span>
+                                                          <span id="like-count${instrument.id}"></span>
 
                                             </div>
                                     </div>
@@ -216,13 +216,18 @@
                                 </div>
                             `;
 
+                    var toggleButton = document.getElementById("toggle-button" + instrument.id);
+                    buttons.push(toggleButton);
+                    var likeCount = document.getElementById("like-count" + instrument.id);
+                    console.log("prima");
+                    console.log(toggleButton);
+                    //const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+                    
+                    debugger;
 
-
-                    const toggleButton = document.getElementById("toggle-button");
-                    const likeCount = document.getElementById("like-count");
-                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
                     toggleButton.addEventListener("click", function () {
                         toggleButton.classList.toggle("liked");
+                        console.log("dopo");
 
                         if (toggleButton.classList.contains("liked")) {
                             incrementLike();
@@ -244,7 +249,7 @@
 
                     async function decrementLike() {
                       try {
-                        const response = await axios.post(`/api/InstrumentApi/decrement/${instrument.id}`);
+                        const response = await axios.post(`/api/InstrumentApi/decrement${instrument.id}`);
                         likeCount.innerHTML = response.data.likeCount;
                       } catch (error) {
                         console.error(error);
