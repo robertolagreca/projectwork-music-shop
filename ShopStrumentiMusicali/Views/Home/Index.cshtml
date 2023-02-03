@@ -204,18 +204,69 @@
                                                     }else{
                                                      <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
                                                      }
+                                                         <p class="card-text">Likes: ${instrument.userLikes}</p>
+                                                          <button id="toggle-button" class="like">
+                                                         <i class="fa fa-thumbs-up"></i> Like
+                                                          </button>
+                                                          <span id="like-count"></span>
+
                                             </div>
                                     </div>
                                 </div>
                                 </div>
                             `;
 
+
+
+                    const toggleButton = document.getElementById("toggle-button");
+                    const likeCount = document.getElementById("like-count");
+                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+                    toggleButton.addEventListener("click", function () {
+                        toggleButton.classList.toggle("liked");
+
+                        if (toggleButton.classList.contains("liked")) {
+                            incrementLike();
+                            instrument.userLikes++;
+                        } else {
+                            decrementLike();
+                            instrument.userLikes--;
+                        }
+                    });
+
+                    async function incrementLike() {
+                      try {
+                            const response = await axios.post(`/api/InstrumentApi/increment${instrument.id}`);
+                        likeCount.innerHTML = response.data.likeCount;
+                      } catch (error) {
+                        console.error(error);
+                      }
+                    }
+
+                    async function decrementLike() {
+                      try {
+                        const response = await axios.post(`/api/InstrumentApi/decrement/${instrument.id}`);
+                        likeCount.innerHTML = response.data.likeCount;
+                      } catch (error) {
+                        console.error(error);
+                      }
+                    }
+
                 });
             }
 
 
         });
+
+
+       
+
+       
+
+
+
     }
+
+    
 </script>
 
    

@@ -10,6 +10,12 @@ namespace ShopStrumentiMusicali.Controllers {
     [ApiController]
     public class InstrumentApiController : ControllerBase {
 
+        private readonly ParamusicContext _context;
+
+        public InstrumentApiController(ParamusicContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         public IActionResult Get() {
             using (ParamusicContext db = new ParamusicContext()) {
@@ -38,6 +44,41 @@ namespace ShopStrumentiMusicali.Controllers {
 
 
 
+        [HttpPost("increment")]
+        public async Task<ActionResult<int>> IncrementLike(int id)
+        {
+            var instrument = await _context.Instruments.FindAsync(id);
+            if (instrument == null)
+            {
+                return NotFound("L'instrument con questo id non è stato trovato!");
+            }
+
+            instrument.UserLikes++;
+            await _context.SaveChangesAsync();
+
+            return Ok(instrument);
+        }
+
+        [HttpPost("decrement")]
+        public async Task<ActionResult<int>> DecrementLike(int id)
+        {
+            var instrument = await _context.Instruments.FindAsync(id);
+            if (instrument == null)
+            {
+                return NotFound("L'instrument con questo id non è stato trovato!");
+            }
+            instrument.UserLikes--;
+            await _context.SaveChangesAsync();
+
+            return Ok(instrument);
+        }
+
+
+
+
     }
 
+
 }
+
+
