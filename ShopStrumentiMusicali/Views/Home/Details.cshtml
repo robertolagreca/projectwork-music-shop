@@ -16,10 +16,12 @@
         </div>
     </div>
     <div class="row justify-content-center d-flex">
-        <div class="col-md-6 bg-white rounded">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-white rounded justify-content-center">
             <div id="instrument_container">
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 <!--AXIOS-->
@@ -37,9 +39,9 @@ axios.get("/api/InstrumentApi/"+ id).then((res) => {
 
                 document.getElementById('instrument_container').innerHTML +=
                     `
-                        
-                              <div class="card-body h-100">
-                                                <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+
+                             <div class="card" style="width: 20rem;">
+                                          
                                     <div class="card-body">
                                         <h5 class="card-title p-2 mb-2 border-3 border-dark border-top border-bottom">Dettagli strumento</h5>
                                                  <p class="card-text p-1 border-1 border-dark border-bottom">Nome: ${instrument.name}</p>
@@ -47,6 +49,7 @@ axios.get("/api/InstrumentApi/"+ id).then((res) => {
                                                  <p class="card-text p-1border-1 border-dark border-bottom">Prezzo: ${instrument.price}</p>
                                                  <p class="card-text p-1 border-1 border-dark border-bottom">Quantità: ${instrument.quantity}</p>
                                     </div>
+                                        <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
                             </div>
                         
                     `;
