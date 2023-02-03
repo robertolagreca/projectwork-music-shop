@@ -45,7 +45,7 @@ namespace ShopStrumentiMusicali.Controllers {
 
 
         [HttpPost("increment")]
-        public async Task<ActionResult<int>> IncrementLike(int id)
+        public async Task<ActionResult<int?>> IncrementLike(int id)
         {
             var instrument = await _context.Instruments.FindAsync(id);
             if (instrument == null)
@@ -56,11 +56,11 @@ namespace ShopStrumentiMusicali.Controllers {
             instrument.UserLikes++;
             await _context.SaveChangesAsync();
 
-            return Ok(instrument);
+            return Ok(instrument.UserLikes);
         }
 
         [HttpPost("decrement")]
-        public async Task<ActionResult<int>> DecrementLike(int id)
+        public async Task<ActionResult<int?>> DecrementLike(int id)
         {
             var instrument = await _context.Instruments.FindAsync(id);
             if (instrument == null)
@@ -70,7 +70,7 @@ namespace ShopStrumentiMusicali.Controllers {
             instrument.UserLikes--;
             await _context.SaveChangesAsync();
 
-            return Ok(instrument);
+            return Ok(instrument.UserLikes);
         }
 
 
