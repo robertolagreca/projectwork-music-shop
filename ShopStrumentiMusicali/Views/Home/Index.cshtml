@@ -42,6 +42,19 @@
         </div>
     </div>
 
+    <div class="container">
+        <div id="js_no_piuvenduti" class="row text-center d-none">
+            <div class="col-12">
+                <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
+            </div>
+        </div>
+        <div id="js_piuvenduti_table" class="row d-none">
+            <!--qui verranno mostrati gli elementi -->
+            <!--Richiamo a file JS-->
+        </div>
+
+
+    </div>
 
     <div class="container-fluid mt-2 mb-5">
         <div class="row mx-5">
@@ -122,6 +135,7 @@
 <!--Verranno visualizzate le card attraverso l'API-->
 <div class="container">
     <!--Richiamo a file JS-->
+    
     <div id="js_no_instrument" class="row text-center d-none">
         <div class="col-12">
             <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
@@ -162,7 +176,7 @@
             console.log('strumento visualizzato', res);
 
 
-            if (res.data.length == 0) {
+            if (res.data.instruments.length == 0) {
 
                 document.getElementById('js_no_instrument').classList.remove('d-none');
                 document.getElementById('js_instrument_table').classList.add('d-none');
@@ -174,11 +188,11 @@
 
 
 
-                
 
+                
                 document.getElementById('js_instrument_table').innerHTML = '';
 
-                res.data.forEach(instrument => {
+                res.data.instruments.forEach(instrument => {
 
                     console.log('strumento', instrument);
 
@@ -238,7 +252,99 @@
 
             }
 
-            res.data.forEach(instrument => {
+        @************************************************************************************@
+
+            if (res.data.piuvenduti.length == 0) {
+
+                document.getElementById('js_no_piuvenduti').classList.remove('d-none');
+                document.getElementById('js_piuvenduti_table').classList.add('d-none');
+
+            } else {
+
+                document.getElementById('js_piuvenduti_table').classList.remove('d-none');
+                document.getElementById('js_no_piuvenduti').classList.add('d-none');
+
+
+
+
+
+                document.getElementById('js_piuvenduti_table').innerHTML = '';
+
+                res.data.piuvenduti.forEach(instrument => {
+
+                    console.log('piuvenduto', instrument);
+
+                    document.getElementById('js_piuvenduti_table').innerHTML +=
+                        `       <div class="col-4">
+                                            <div class="card" style="width: 18rem;">
+
+                                                    <div class="card-image">
+                                                              <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+                                                    <div class="card-body">
+
+                                                        <h5 class="card-title">Nome: ${instrument.name}</h5>
+                                                            <p class="card-text">Descrizione: ${instrument.description}</p>
+
+                                                                <p class="card-text">Prezzo: ${instrument.price}</p>
+                                                                <p class="card-text">Quantita: ${instrument.quantity}</p>
+                                                                 <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Cliente"))
+        {
+                                                                                                <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+                                                                                                 <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
+        }
+    }
+    else
+    {
+                                                                     <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
+    }
+                                                                 <br/>
+                                                                      <br/>
+                                                                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                                              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                                              <button class="toggle-button${instrument.id}" type="button">
+
+                                                                                         <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+                                                                      </button>
+                                                                      <span id="like-count${instrument.id}"></span>
+
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                        `;
+
+
+
+
+
+                });
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            res.data.instruments.forEach(instrument => {
                 document.querySelector(`.toggle-button${instrument.id}`).addEventListener("click", function () {
                     console.log("Dentro: " + instrument.userLikes);
                     document.querySelector(`.toggle-button${instrument.id}`).classList.toggle("liked");

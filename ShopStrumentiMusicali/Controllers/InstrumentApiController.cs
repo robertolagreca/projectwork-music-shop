@@ -21,8 +21,19 @@ namespace ShopStrumentiMusicali.Controllers {
         public IActionResult Get() {
             using (ParamusicContext db = new ParamusicContext()) {
                 List<Instrument> instruments = db.Instruments.Include(instrument => instrument.Category).ToList<Instrument>();
+                DateTime lastMonth = DateTime.Now.AddMonths(-1);
+                List<int> mostTransactedInstruments = db.UserTransactions
+                  .Where(t => t.TransactionDate >= lastMonth)
+                  .GroupBy(t => t.InstrumentID)
+                  .OrderByDescending(g => g.Count())
+                  .Select(g => g.Key)
+                  .Take(10)
+                  .ToList();
 
-                return Ok(instruments);
+                List<Instrument> piuvenduti = db.Instruments
+                  .Where(i => mostTransactedInstruments.Contains(i.Id))
+                  .ToList();
+                return Ok(new { instruments , piuvenduti});
             }
         }
 
@@ -61,35 +72,6 @@ namespace ShopStrumentiMusicali.Controllers {
         }
 
 
-
-        [HttpPost("increment")]
-        public async Task<ActionResult<int?>> IncrementLike(int id)
-        {
-            var instrument = await _context.Instruments.FindAsync(id);
-            if (instrument == null)
-            {
-                return NotFound("L'instrument con questo id non è stato trovato!");
-            }
-
-            instrument.UserLikes++;
-            await _context.SaveChangesAsync();
-
-            return Ok(instrument.UserLikes);
-        }
-
-        [HttpPost("decrement")]
-        public async Task<ActionResult<int?>> DecrementLike(int id)
-        {
-            var instrument = await _context.Instruments.FindAsync(id);
-            if (instrument == null)
-            {
-                return NotFound("L'instrument con questo id non è stato trovato!");
-            }
-            instrument.UserLikes--;
-            await _context.SaveChangesAsync();
-
-            return Ok(instrument.UserLikes);
-        }
 
 
 
