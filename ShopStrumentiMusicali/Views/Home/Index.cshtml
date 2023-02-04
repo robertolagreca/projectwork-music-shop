@@ -214,9 +214,11 @@
                                                              <br/>
                                                                   <br/>
                                                                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                                                                      
+                                                                          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                                                                       <button class="toggle-button${instrument.id}" type="button">
-                                                                        Like<i class="fa fa-thumbs-up"></i>
+                                                                                
+                                                                                     <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+                                                                       
                                                                   </button>
                                                               <span id="like-count${instrument.id}"></span>
 
@@ -256,7 +258,9 @@
         });
     }
 
-   
+   function myFunction(x) {  
+  x.classList.toggle("fa-thumbs-down");  
+}  
         
 
 
