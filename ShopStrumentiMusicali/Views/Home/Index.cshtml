@@ -41,21 +41,21 @@
             <div class="col"></div>
         </div>
     </div>
-
+    }
     <div class="container">
         <div id="js_no_piuvenduti" class="row text-center d-none">
             <div class="col-12">
                 <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
             </div>
         </div>
+    <h1 class="text-opacity-75 text-white text-center">Piu venduti:</h1>
         <div id="js_piuvenduti_table" class="row d-none">
             <!--qui verranno mostrati gli elementi -->
             <!--Richiamo a file JS-->
         </div>
 
-
     </div>
-
+    if(!User.Identity.IsAuthenticated){
     <div class="container-fluid mt-2 mb-5">
         <div class="row mx-5">
             <div class="card col-12 border-arrotondato vetrina-background p-0">
@@ -207,8 +207,8 @@
                                                 <h5 class="card-title">Nome: ${instrument.name}</h5>
                                                         <p class="card-text">Descrizione: ${instrument.description}</p>
 
-                                                        <p class="card-text">Prezzo: ${instrument.price}</p>
-                                                        <p class="card-text">Quantita: ${instrument.quantity}</p>
+                                                        <p class="card-text">Prezzo: ${instrument.price}&euro;</p>
+                                                        
                                                          <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
     @if (User.Identity.IsAuthenticated)
     {
@@ -285,8 +285,8 @@
                                                         <h5 class="card-title">Nome: ${instrument.name}</h5>
                                                             <p class="card-text">Descrizione: ${instrument.description}</p>
 
-                                                                <p class="card-text">Prezzo: ${instrument.price}</p>
-                                                                <p class="card-text">Quantita: ${instrument.quantity}</p>
+                                                                <p class="card-text">Prezzo: ${instrument.price}&euro;</p>
+                                                                
                                                                  <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
     @if (User.Identity.IsAuthenticated)
     {
