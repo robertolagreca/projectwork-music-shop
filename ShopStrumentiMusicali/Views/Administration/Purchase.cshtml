@@ -7,33 +7,41 @@
     Layout = "_Layout";
 }
 
-<div class="container bg-white rounded p-3 mt-5">
-<div class="d-flex align-items-center">
-    <h1 class="text-dark">Compra strumento</h1>
-</div>
+<div class="container-fluid rounded p-3 my-5 ">
+    <div class= "row">
+        <div class="col"></div>
 
-<form asp-controller="Administration" asp-action="Purchase" method="post">
-    @Html.AntiForgeryToken()
+        <div class="d-flex card col-md-6 background-login">
+        <h1 class="text-dark">Compra strumento</h1>
 
-<div class="container-fluid">
-    <div class="mb-3 form-check d-inline-block justify-content-center">
-       <div class="card" style="width: 20rem;">
-            <label>Quantita:</label>
-            <input asp-for="Quantity" type="text" class="form-control" />
+            <form asp-controller="Administration" asp-action="Purchase" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="row p-0 mb-3 justify-content-center">
+                    <div class="col-xs-2">
+                    <h3> <label class="fw-bolder">Quantità:</label> </h3>
+                    <input asp-for="Quantity" type="text" class="form-control" />
             <span asp-validation-for="Quantity" class="text-danger"></span>
-
+            </div>
             <!--Bottone per salvare acquisti-->
-            <div class="my-2 d-grid justify-content-center">
+            <div class="my-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary btn-danger" formmethod="post">Acquista</button>
             </div>   
     </div>
 
-                <div class="mb-3 form-check d-flex justify-content-center rounded">
+                
         <div id="instrument_container">
-    </div>
-    </div>
+         </div>
+    
+
+    </form>
 
     </div>
+        <div class="col"></div>
+    </div>
+
+
+
 </div>
 
     @*<div class="mb-3 form-check">
@@ -81,8 +89,7 @@
         <span asp-validation-for="Instrument.Quantity" class="text-danger"></span>
     </div>*@
 
-</form>
-</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
@@ -105,8 +112,12 @@
                                                      <p class="card-text p-1border-1 border-dark border-bottom">Prezzo: ${instrument.price}&euro;</p>
                                                      <p class="card-text p-1 border-1 border-dark border-bottom">Quantità: ${instrument.quantity}</p>
                                                      <p class="card-text p-1 border-1 border-dark border-bottom">Likes: ${instrument.userLikes}</p>
-                                       
+
+                                         <div class="p-0 mb-3 col-xs-2 form-check d-flex justify-content-center">
+                                           <div class="card p-0 m-0" style="width: 22rem; min-height: 30rem;">
                                             <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+                                           </div>
+                                         </div> 
                                
 
                         `;
