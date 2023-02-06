@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IdentityRole
 
-<div class="container">
+<div class="container bg-white rounded p-3 mt-5">
     <form asp-controller="Roles" asp-action="Create" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
@@ -11,3 +11,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
+</div>

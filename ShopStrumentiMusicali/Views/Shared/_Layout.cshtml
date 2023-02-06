@@ -84,18 +84,17 @@
                     
                             }
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="\Home\Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Il nostro negozio</a>
+                            <a class="nav-link active" aria-current="page" href="\Home\Index\#shop">Il nostro negozio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">I nostri fornitori</a>
+                            <a class="nav-link" href="\Home\Index\#contact">Contattaci!</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contattaci!</a>
-                        </li>
+
                         <!--opzioni dropdown menu-->
+                         <!-- COMMENTATA PERCHE' NON ANCORA IMPLEMENTATA
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                aria-expanded="false">
@@ -114,12 +113,14 @@
                                 <li><a class="dropdown-item" href="#">Catalogo completo</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> -->
+
                     <!--Search-bar-->
+                  <!-- COMMENTATA PERCHE' NON ANCORA IMPLEMENTATA
                     <form class="d-flex mt-3" role="search">
                         <input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search">
                         <button class="btn btn-success" type="submit">Ricerca avanzata:</button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -127,6 +128,7 @@
 
             @RenderBody() 
     <!--Layout footer-->      
+    <section id="contact"></section> 
     <footer class="background-footer">
         <div>
             <p class="text-center fs-4 text-white fw-bolder">ParaMusic Instrument Store</p>
