@@ -16,21 +16,23 @@
     @Html.AntiForgeryToken()
 
 <div class="container-fluid">
-    <div class="mb-3 form-check">
-
+    <div class="mb-3 form-check d-inline-block justify-content-center">
+       <div class="card" style="width: 20rem;">
             <label>Quantita:</label>
             <input asp-for="Quantity" type="text" class="form-control" />
             <span asp-validation-for="Quantity" class="text-danger"></span>
 
             <!--Bottone per salvare acquisti-->
-            <div class="d-grid justify-content-end">
+            <div class="my-2 d-grid justify-content-center">
                 <button type="submit" class="btn btn-primary btn-danger" formmethod="post">Acquista</button>
             </div>   
     </div>
 
-    <div class="mb-3 form-check">
+                <div class="mb-3 form-check d-flex justify-content-center rounded">
         <div id="instrument_container">
-        </div>
+    </div>
+    </div>
+
     </div>
 </div>
 
