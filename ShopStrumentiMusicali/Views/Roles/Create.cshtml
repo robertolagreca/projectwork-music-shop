@@ -1,14 +1,21 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IdentityRole
 
-<div class="container bg-white rounded p-3 mt-5">
+<div class="container-fluid align-items-center rounded p-3 mt-5">
+    <div class="row">
+    <div class="col"></div>
+    <div class="col-md-4 background-login">
     <form asp-controller="Roles" asp-action="Create" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
-            <label>Nome:</label>
+            <h2>Nuovo Utente</h2>
+            <label>Inserisci nome:</label>
             <input asp-for="Name" type="text" class="form-control"/>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
+    </div>
+    <div class="col"></div>
+    </div>
 </div>
