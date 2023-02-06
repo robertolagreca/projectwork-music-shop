@@ -288,31 +288,26 @@
                                                                 <p class="card-text">Prezzo: ${instrument.price}&euro;</p>
                                                                 
                                                                  <a href="/Home/Details/${instrument.id}"class="btn btn-primary">Dettagli</a>
-    @if (User.Identity.IsAuthenticated)
-    {
-        @if (User.IsInRole("Cliente"))
-        {
-                                                                                                <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
-        }
-        @if (User.IsInRole("Admin"))
-        {
-                                                                                                 <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
-        }
-    }
-    else
-    {
+                                                                    @if (User.Identity.IsAuthenticated)
+                                                                    {
+                                                                      @if (User.IsInRole("Cliente"))
+                                                                      {
+                                                                          <a href="/Administration/Purchase/${instrument.id}" class="btn btn-primary">Compra</a>
+                                                                      }
+                                                                      @if (User.IsInRole("Admin"))
+                                                                      {
+                                                                          <a href="/Administration/Resupply/${instrument.id}" class="btn btn-primary">Rifornisci</a>
+                                                                      }
+                                                                    }
+                            else
+                                                                    {
                                                                      <a href="Identity/Account/Login" class="btn btn-primary">Compra</a>
-    }
+                                                                    }
                                                                  <br/>
                                                                       <br/>
                                                                          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                                                                               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                                                                              <button class="toggle-button${instrument.id}" type="button">
-
-                                                                                         <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
-
-                                                                      </button>
-                                                                      <span id="like-count${instrument.id}"></span>
+                                                                              
 
                                                     </div>
                                             </div>
