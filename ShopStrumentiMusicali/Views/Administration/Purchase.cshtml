@@ -17,9 +17,14 @@
 
 
     <div class="mb-3 form-check">
-        <label>Quantita:</label>
-        <input asp-for="Quantity" type="text" class="form-control" />
-        <span asp-validation-for="Quantity" class="text-danger"></span>
+       
+            <label>Quantita:</label>
+            <input asp-for="Quantity" type="text" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+           <div id="instrument_container" class="col-md-12 d-flex justify-content-center rounded">
+           </div>
+        
+        
     </div>
 
     @*<div class="mb-3 form-check">
@@ -74,3 +79,37 @@
 
 </form>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script type="text/javascript">
+            
+    //AVVISO ANCORA IN BOZZA. DA CONTROLLARE NOMI VARIABILI.
+    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+    axios.get("/api/InstrumentApi/" + id).then((res) => {
+        let instrument = res.data;
+        console.log('strumento visualizzato', instrument);
+
+
+        document.getElementById('instrument_container').innerHTML +=
+            `
+
+                                     <div class="card" style="width: 20rem;">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title p-2 mb-2 border-3 border-dark border-top border-bottom">Dettagli strumento</h5>
+                                                     <p class="card-text p-1 border-1 border-dark border-bottom">Nome: ${instrument.name}</p>
+                                                     <p class="card-text p-1 border-1 border-dark border-bottom">Descrizione: ${instrument.description}</p>
+                                                     <p class="card-text p-1border-1 border-dark border-bottom">Prezzo: ${instrument.price}&euro;</p>
+                                                     <p class="card-text p-1 border-1 border-dark border-bottom">Quantità: ${instrument.quantity}</p>
+                                                     <p class="card-text p-1 border-1 border-dark border-bottom">Likes: ${instrument.userLikes}</p>
+                                        </div>
+                                            <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
+                                </div>
+
+                        `;
+
+    });
+
+
+</script>
