@@ -48,26 +48,21 @@
             <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
         </div>
     </div>
-    <h1 class="text-opacity-75 text-white text-center">Piu venduti:</h1>
+    <div class="row align-items-center bg-black">
+        <div class="col"></div>
+		<div class="col-md-8 d-flex justify-content-center bg-warning">
+            <img src="https://is4.revolveassets.com/images/up/2020/January/012920_m_bestsellers_banner.gif" style="mix-blend-mode:multiply;">
+            <!--<h1 class="text-opacity-75 text-black text-center">I più venduti:</h1>-->
+        </div>
+        <div class="col"></div>
+    </div>
+    
     <div id="js_piuvenduti_table" class="row d-none">
         <!--qui verranno mostrati gli elementi -->
         <!--Richiamo a file JS-->
     </div>
-
- <!--Verranno visualizzate le card attraverso l'API-->
-<div class="container">
-    <!--Richiamo a file JS-->
-    <div id="js_no_instrument" class="row text-center d-none">
-        <div class="col-12">
-            <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
-        </div>
-    </div>
-    <div id="js_instrument_table" class="row d-none">
-         
-        <!--qui verranno mostrati gli elementi -->
-        <!--Richiamo a file JS-->
-    </div>
 </div>
+
  
 <section id="shop"></section>
 <div class="container-fluid mt-2 mb-5">
@@ -144,7 +139,24 @@
     </div>
 </div>
 
+ <!--Verranno visualizzate le card attraverso l'API-->
+    <div class="container">
+        <!--Richiamo a file JS-->
+        <div id="js_no_instrument" class="row text-center d-none">
+            <div class="col-12">
+                <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
+            </div>
+        </div>
+        <div id="js_instrument_table" class="row d-none">
+
+            <!--qui verranno mostrati gli elementi -->
+            <!--Richiamo a file JS-->
+        </div>
+    </div>
+
 }
+
+   
 
 @if (User.IsInRole("Admin"))
 {
