@@ -7,9 +7,11 @@
 @{
     ViewData["Title"] = "Users";
 }
-<div class="container bg-white rounded p-3 mt-5">
+
+<div class="container rounded p-3 mt-5">
 <div class="row text-center">
-    <div class="col-md-6 background-login"
+<div class="col"></div>
+    <div class="col-md-6 background-login">
     <h1 class="display-4">Utenti:</h1>
     @if (@Model != null && @Model.Any())
     {
@@ -37,5 +39,6 @@
     </table>
     }
 </div>
+        <div class="col"></div>
 </div>
 </div>
