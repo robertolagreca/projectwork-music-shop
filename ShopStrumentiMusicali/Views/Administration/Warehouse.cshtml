@@ -6,23 +6,21 @@
 
 <div class="container">
     <div class="row justify-content-center d-flex">
-        <div class="col-md-6">
-            <br> <br>
-        </div>
-    </div>
-    <div class="row justify-content-center d-flex">
-        <div class="col-12 bg-white rounded">
+        <div class="row my-3">
+        <div class="col"></div>
+        <div class="col-md-6 background-login rounded">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="p-2 mb-2 border-3 border-dark border-top">Magazzino</h1>
+                <h1 class="p-2 mb-2">Magazzino</h1>
             </div>
 
-            <table class="table post-list-table table-borderless">
+                <table class="table text-center">
                 <thead>
                     <tr class="p-1 border-1 border-dark border-bottom">
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Quantità</th>
                         <th>Stato</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -31,21 +29,27 @@
                             <td class="p-1 border-1 border-dark border-bottom">@instrument.Id</td>
                             <td class="title p-1 border-1 border-dark border-bottom">@instrument.Name</td>
                             <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.Quantity</td>
+
                             @if (instrument.Quantity <= 10)
                             {
-                                <td class="quantity p-1 border-1 border-dark text-danger border-bottom">@instrument.State<a class="btn btn-primary btn-danger p-1" href="@Url.Action("Resupply", "Administration")">Rifornisci</a></td> 
+                                    <td class="quantity p-1 border-1 border-dark text-danger text-center border-bottom me-md-2">
+                                        @instrument.State
+                                    <a class="btn btn-primary btn-danger p-1 ms-md-2" href="@Url.Action("Resupply", "Administration", new { id = @instrument.Id })" role="button">Rifornisci</a>
+                               </td>
                             }
                             else
                             {
-                                <td class="quantity p-1 border-1 border-dark border-bottom">@instrument.State</td>
+                                    <td class="quantity p-1 border-1 border-dark text-center border-bottom">@instrument.State</td>
                             }
-
+                               
                                 
                          
                         </tr>
                     }
                 </tbody>
             </table>
+        </div>
+            <div class="col"></div>
         </div>
     </div>
 </div>

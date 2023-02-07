@@ -14,10 +14,23 @@
     @Html.AntiForgeryToken()
 
     <div class="mb-3 form-check">
-        <label>Fornitore:</label>
-        <input asp-for="Supplier" type="text" class="form-control" />
-        <span asp-validation-for="Supplier" class="text-danger"></span>
+          <label>Id:</label>
+          <input asp-for="Instrument.Id" type="text" class="form-control" disabled />
+     </div>
+
+    <div class="mb-3 form-check">
+          <label>Nome:</label>
+                <input asp-for="Instrument.Name" type="text" class="form-control" disabled />
+          <span asp-validation-for="Instrument.Name" class="text-danger" disabled></span>
     </div>
+
+    <div class="mb-3 form-check">
+         <label>Fornitore:</label>
+         <input asp-for="Supplier" type="text" class="form-control" />
+         <span asp-validation-for="Supplier" class="text-danger"></span>
+    </div>
+
+     
 
     <div class="mb-3 form-check">
         <label>Quantita:</label>
