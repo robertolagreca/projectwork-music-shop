@@ -41,7 +41,7 @@
             <div class="col"></div>
         </div>
     </div>
-}
+
 <div class="container">
     <div id="js_no_piuvenduti" class="row text-center d-none">
         <div class="col-12">
@@ -51,7 +51,7 @@
     <div class="row align-items-center bg-black">
         <div class="col"></div>
 		<div class="col-md-8 d-flex justify-content-center bg-warning">
-            <img src="https://is4.revolveassets.com/images/up/2020/January/012920_m_bestsellers_banner.gif" style="mix-blend-mode:multiply;">
+            <img src="https://is4.revolveassets.com/images/up/2020/January/012920_m_bestsellers_banner.gif" style="mix-blend-mode:multiply; max-width:90%;">
             <!--<h1 class="text-opacity-75 text-black text-center">I più venduti:</h1>-->
         </div>
         <div class="col"></div>
@@ -140,6 +140,10 @@
 </div>
 
  <!--Verranno visualizzate le card attraverso l'API-->
+    <div class="col-12 background-login text-center my-2">
+        <h1>Catalogo strumenti</h1>
+    </div>
+    <section id="catalog"></section>
     <div class="container">
         <!--Richiamo a file JS-->
         <div id="js_no_instrument" class="row text-center d-none">
@@ -161,9 +165,13 @@
 @if (User.IsInRole("Admin"))
 {
     <!--Verranno visualizzate le card attraverso l'API quando si è admin-->
+<div class="col-12 background-login text-center my-2">
+    <h1>Catalogo strumenti</h1>
+</div>
+
+<section id="catalog"></section>
 <div class="container">
     <!--Richiamo a file JS-->
-
     <div id="js_no_instrument" class="row text-center d-none">
         <div class="col-12">
             <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
