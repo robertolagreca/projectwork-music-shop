@@ -3,25 +3,31 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Transacioni di utenti</h1>
-
-<table class="table">
+<div class="container">
+    <h1 class="background-login pb-1 mb-0">Transazioni degli utenti</h1>
+    <div class="row my-3">
+        <div class="col"></div>
+        <div class="col-md-8">
+           
+   <table class="table background-login table-responsive-md table-sm text-center">
+                
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TransactionDate)
+                Date
+                <!--@@Html.DisplayNameFor(model => model.TransactionDate)-->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TransactionQuantity)
+                Quantity
+                <!--@@Html.DisplayNameFor(model => model.TransactionQuantity)-->
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Instrument)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -38,13 +44,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Instrument.Id)
+                                
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+        <div class="col"></div>
+    </div>
+</div>
