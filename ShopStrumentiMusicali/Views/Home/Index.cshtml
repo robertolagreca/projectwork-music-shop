@@ -7,7 +7,7 @@
 
 
 <!--Carousel index-->
-@if (!User.Identity.IsAuthenticated || !User.IsInRole("Admin"))
+@if (!User.Identity.IsAuthenticated)
 {
     <div class="container-fluid carousel-background d-none d-md-block">
         <div class="row">
@@ -41,6 +41,8 @@
             <div class="col"></div>
         </div>
     </div>
+    }
+
 
 <div class="container">
     <div id="js_no_piuvenduti" class="row text-center d-none">
@@ -63,7 +65,7 @@
     </div>
 </div>
 
- 
+@if (!User.IsInRole("Admin") || (!User.Identity.IsAuthenticated)){
 <section id="shop"></section>
     <div class="container-fluid mt-2 mb-5 d-none d-md-block">
     <div class="row mx-5">
@@ -136,7 +138,8 @@
         </div>
     </div>
 </div>
-    
+ 
+ 
     <div class="container-fluid my-5 d-none d-md-block">
     <div class="row mx-5">
         <div class="card col-12 border-arrotondato vetrina-background p-0">
@@ -159,6 +162,7 @@
         </div>
     </div>
 </div>
+}
 
  <!--Verranno visualizzate le card attraverso l'API-->
     <div class="col-12 background-login text-center my-2">
@@ -179,32 +183,7 @@
         </div>
     </div>
 
-}
 
-   
-
-@if (User.IsInRole("Admin"))
-{
-    <!--Verranno visualizzate le card attraverso l'API quando si è admin-->
-<div class="col-12 background-login text-center my-2">
-    <h1>Catalogo strumenti</h1>
-</div>
-
-<section id="catalog"></section>
-<div class="container">
-    <!--Richiamo a file JS-->
-    <div id="js_no_instrument" class="row text-center d-none">
-        <div class="col-12">
-            <h3>Non è presente nessuno strumento. In fase di aggiornamento.</h3>
-        </div>
-    </div>
-    <div id="js_instrument_table" class="row d-none">
-         
-        <!--qui verranno mostrati gli elementi -->
-        <!--Richiamo a file JS-->
-    </div>
-</div>
-}
 
 
 
@@ -255,13 +234,14 @@
                     console.log('strumento', instrument);
 
                     document.getElementById('js_instrument_table').innerHTML +=
-                        `       <div class="col-sm-4 d-flex align-items-stretch p-0  mx-0 my-3">
+                        `  
+                            <div class="col-sm-4 d-flex align-items-stretch my-3">
                                                     <div class="card p-0 m-0" style="width: 22rem; min-height: 30rem;">
 
                                                     <div class="card-image">
                                                               <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
                                                         </div>
-                                                    <div class="card-body">
+                                                    <div class="card-body p-0 m-0">
 
                                                     <h5 class="card-title">Nome: ${instrument.name}</h5>
                                                             <p class="card-text">Descrizione: ${instrument.description}</p>
@@ -301,7 +281,7 @@
                                             
                                     </div>
                               </div>
-                            `;
+                             `;
 
 
 
@@ -337,7 +317,7 @@
 
                     document.getElementById('js_piuvenduti_table').innerHTML +=
                         `       <div class="col-sm-4 d-flex align-items-stretch my-3">
-                                                  <div class="card p-0 m-0"  style="width: 18rem;">
+                                                  <div class="card p-0 m-0"  style="width: 22rem;">
 
                                                         <div class="card-image">
                                                                   <img src="${instrument.imageURL}" class="card-img-top" alt="strumento">
