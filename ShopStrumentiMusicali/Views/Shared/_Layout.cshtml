@@ -20,8 +20,8 @@
 </head>
 <body class="pb-0 mb-0">
 
-
-
+<!--SEZIONE HEADER-->
+<header>
     <!--Inizio Navbar-->
     <nav class="navbar navbar-dark bg-dark static-top">
         <div class="container-fluid">
@@ -94,9 +94,11 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="\Home\Index\#catalog">Catalogo</a>
                         </li>
+                        @if (!User.IsInRole("Admin")){
                         <li class="nav-item">
                             <a class="nav-link" href="\Home\Index\#contact">Contattaci!</a>
                         </li>
+                         }
 
                         <!--opzioni dropdown menu-->
                          <!-- COMMENTATA PERCHE' NON ANCORA IMPLEMENTATA
@@ -126,32 +128,40 @@
                         <input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search">
                         <button class="btn btn-success" type="submit">Ricerca avanzata:</button>
                     </form> -->
+                    </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <main class="flex-grow-1">
+    </header>
+
+  <!--SEZIONE MAIN-->   
+    <div class="container">
+    <main role="main" "class="pb-3 mb-0">
         @RenderBody() 
     </main>
-            
-    
-    <!--Layout footer-->      
-    <section id="contact"></section> 
-    <footer class="background-footer">
-       
+    </div>
 
-        <div class="text-center fs-6 text-white fw-light">
 
-            <p class="text-center fs-4 text-white fw-bolder">ParaMusic Instrument Store</p>
-            Via 3 Settembre, 17 - 47891 Milano (MN) <br>
-            Tel. +39 0549/909670 - Fax +39 0549/909685 <br>
-            E-mail: info@ParaMusic.sm <br>
-            C.O.E. SM 07256 <br>
-            Iscritto al Registro e-commerce al nr. 9999999 del 15/04/2014 <br>
+     <!--Layout footer-->
+ @if (!User.IsInRole("Admin")) {
+        <section id="contact"></section>
+    <footer>
+        <div class="container-fluid bg-dark footer">
+                 <div class="text-center fs-6 text-white fw-light">
 
+                <p class="text-center fs-4 text-white fw-bolder">ParaMusic Instrument Store</p>
+                Via 3 Settembre, 17 - 47891 Milano (MN) <br>
+                Tel. +39 0549/909670 - Fax +39 0549/909685 <br>
+                E-mail: info@ParaMusic.sm <br>
+                C.O.E. SM 07256 <br>
+                Iscritto al Registro e-commerce al nr. 9999999 del 15/04/2014 <br>
+
+            </div>
         </div>
     </footer>
-            
+    }
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

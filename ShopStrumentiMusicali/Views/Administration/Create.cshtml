@@ -5,10 +5,14 @@
 }
 
 
-<div class="container bg-white rounded p-3 my-4">
-	<div class="d-flex align-items-center">
-	<h1 class="text-dark">Aggiungere strumento</h1>
-	</div>
+<div class="container p-3 my-4">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-md-6 background-login rounded pb-2">
+
+	    <div class="d-flex align-items-center">
+			<h1 class="text-dark">Aggiungere strumento</h1>
+		</div>
 
 	<form asp-controller="Administration" asp-action="Create" method="post">
 		@Html.AntiForgeryToken()
@@ -56,10 +60,12 @@
 			<span asp-validation-for="Instrument.CategoryID" class="text-danger"></span>
 			</div>
 
-		<div class="d-grid justify-content-end">
-			<button type="submit" class="btn btn-info">Salva</button>
-		</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<button type="submit" class="btn btn-primary">Salva</button>
+			</div>
 	</form>
+		</div>
+		<div class="col"></div>
 </div>
 </div>
 		<!--Da sistemare sicuro in base allo shop transaction-->

@@ -30,7 +30,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     {
                         ins.State = "Esaurito";
                     }
-                    if (ins.Quantity >= 10)
+                    if (ins.Quantity > 10)
                     {
                         ins.State = "Disponibile";
                     }

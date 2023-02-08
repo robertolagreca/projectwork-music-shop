@@ -30,9 +30,9 @@
                 <select asp-for="InstrumentID" class="form-control" asp-items="ViewBag.InstrumentID"></select>
                 <span asp-validation-for="InstrumentID" class="text-danger"></span>
             </div>
-            <div class="form-group text-end">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+                <div class="form-group text-end d-grid gap-2 d-md-flex justify-content-md-end my-2">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+                </div>
         </form>
             <div class="text-end">
                 <a asp-action="Index">Back to List</a>
