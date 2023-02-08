@@ -101,7 +101,7 @@ namespace ShopStrumentiMusicali.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (userTransaction is not null)
             {
                 try
                 {
