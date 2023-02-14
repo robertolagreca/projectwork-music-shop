@@ -5,44 +5,6 @@
     Layout = "_Layout";
 }
 
-<!--Carousel index-->
-@if (!User.Identity.IsAuthenticated)
-{
-    <div class="container-fluid carousel-background d-none d-md-block">
-        <div class="row">
-            <div class="col"></div>
-            <div id="carouselExampleAutoplaying" class="carousel slide col my-3" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="2500">
-                        <img src="https://www.informusic.it/wp-content/uploads/2020/10/miglior-violino.jpg" class="d-block w-100"
-                         alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2500">
-                        <img src="https://www.raiscuola.rai.it/dl/img/2021/03/24/1616586033732_1584444217498_fotoMusica2020.jpg"
-                         class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2500">
-                        <img src="https://spettacolo.com/media/catalog/category/arredamento-music-store-pannelli-dogato-bianco-SPETTACOLO-Shop-For-Store-min.jpg"
-                         class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <div class="col"></div>
-        </div>
-    </div>
-    }
-
-
 <div class="container">
     <div id="js_no_piuvenduti" class="row text-center d-none">
         <div class="col-12">
@@ -182,6 +144,12 @@
         </div>
     </div>
 
+@if (User.IsInRole("Admin"))
+{
+    <div class="container" style="text-align:right;">
+        <a class="text-white" aria-current="page" href="\Home\Index\">Torna su</a>
+    </div>
+    }
 <!--AXIOS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 

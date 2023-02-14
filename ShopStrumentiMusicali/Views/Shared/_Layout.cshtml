@@ -22,117 +22,84 @@
 
 <!--SEZIONE HEADER-->
 <header>
-    <!--Inizio Navbar-->
-    <nav class="navbar navbar-dark bg-dark static-top">
-        <div class="container-fluid">
-            <!--Logo Navbar -->
-            <a asp-area="" asp-controller="Home" asp-action="Index" alt="Logo" width="6%" height="2%">
-                <img class="d-inline-block" src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" asp-area="" asp-controller="Home" asp-action="Index" alt="Logo" width="20%" height="10%">
-            </a>
-            <!--Titolo centrale-->
-            <p class="navbar-brand d-flex justify-content-center ps-0 pe-4 me-4 fs-2 fw-bold">Music Instrument Store</p>
-            <div class="">
-                <!--Bottoni login Registrati-->
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <div class="nav-items">
-                        <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ciao: @UserManager.GetUserName(User)!</a>
-
-
-                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button id="logout" type="submit" class="nav-link btn btn-link text-white">Logout</button>
-                        </form>
-                    </div>
-                }
-                else
-                {
-
-
-
-                    <a class="btn btn-success ms-5" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                    <a class="btn btn-warning ms-4" id="register" asp-area="Identity" asp-page="/Account/Register">Registrati</a>
-                }
-                <button class="navbar-toggler ms-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
-                        aria-controls="offcanvasDarkNavbar">
+    <!--Navbar section-->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar">
+                <img class="d-inline-block" src="https://cdn-icons-png.flaticon.com/512/1059/1059909.png?" alt="Logo" width="50" height="50">
+                </a>
+                <a class="navbar-brand" href="#">Music Instrument Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            </div>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                 aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <!--Sezione menu off-canvas (laterale)-->
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ParaMusic Instrument Store</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        @if (User.IsInRole("Admin"))
-                            {
-                                <a class="nav-link btn btn-primary btn-danger"
-                               href="@Url.Action("IndexAdm", "Administration")">
-                                    Amministrazione
-                                </a>
-                            
-                                <a class="nav-link  btn btn-primary btn-outline-info text-white" asp-area="" asp-controller="Roles" asp-action="Index">Ruoli</a>
-                            
-                                <a class="nav-link  btn btn-primary btn-outline-warning text-white" asp-area="" asp-controller="User" asp-action="Index">Utenti</a>
-
-                                <a class="nav-link  btn btn-primary btn-outline-success text-white" asp-area="" asp-controller="Administration" asp-action="Warehouse">Magazzino</a>
-
-                            <a class="nav-link  btn btn-primary btn-outline-success text-white" asp-area="" asp-controller="UserTransactions" asp-action="Index">Transazioni utenti</a>
-                    
-                            }
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="\Home\Index">Home</a>
+                            <a class="nav-link" aria-current="page" href="\Home\Index\">Home</a>
                         </li>
-                        @if (!User.IsInRole("Admin")){
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="\Home\Index\#shop">Il nostro negozio</a>
+                        @if (!User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="\Home\Index\#shop">Chi siamo</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="\Home\Index\#catalog">Catalogo</a>
+                            <a class="nav-link" href="\Home\Index\#catalog">Catalogo</a>
                         </li>
-                        @if (!User.IsInRole("Admin")){
-                        <li class="nav-item">
-                            <a class="nav-link" href="\Home\Index\#contact">Contattaci!</a>
-                        </li>
-                         }
+                        @if (!User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="\Home\Index\#contact">Contatti</a>
+                            </li>
+                        }
 
-                        <!--opzioni dropdown menu-->
-                         <!-- COMMENTATA PERCHE' NON ANCORA IMPLEMENTATA
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Il nostro catalogo:
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Strumenti a corda</a></li>
-                                <li><a class="dropdown-item" href="#">Strumenti a percussione</a></li>
-                                <li><a class="dropdown-item" href="#">Strumenti a fiato</a></li>
-                                <li><a class="dropdown-item" href="#">Strumenti a tastiera</a></li>
-                                <li><a class="dropdown-item" href="#">Strumenti elettronici / MIDI</a></li>
-                                <li><a class="dropdown-item" href="#">Strumenti a percussione</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Catalogo completo</a></li>
-                            </ul>
-                        </li>
-                    </ul> -->
+                            <!--Bottoni login Registrati-->
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                            <li class="nav-item">
+                                <div class="nav-items">
+                                    <a id="manage" class="nav-link text-black" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ciao: @UserManager.GetUserName(User)!</a>
 
-                    <!--Search-bar-->
-                  <!-- COMMENTATA PERCHE' NON ANCORA IMPLEMENTATA
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search">
-                        <button class="btn btn-success" type="submit">Ricerca avanzata:</button>
-                    </form> -->
+                                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button id="logout" type="submit" class="nav-link btn btn-link text-black">Logout</button>
+                                    </form>
+                                </div>
+                             </li>
+                            }
+                            else
+                            {
+                            <li class="nav-item">
+                                <a class="btn btn-success ms-5" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                <a class="btn btn-warning ms-4" id="register" asp-area="Identity" asp-page="/Account/Register">Registrati</a>
+                            </li>
+                            }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary btn-danger"
+                               href="@Url.Action("IndexAdm", "Administration")">
+                                    Admin
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-primary btn-outline-info text-white" asp-area="" asp-controller="Roles" asp-action="Index">Ruoli</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-primary btn-outline-warning text-white" asp-area="" asp-controller="User" asp-action="Index">Utenti</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-primary btn-outline-success text-white" asp-area="" asp-controller="Administration" asp-action="Warehouse">Magazzino</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-primary btn-outline-success text-white" asp-area="" asp-controller="UserTransactions" asp-action="Index">Transazioni</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+
     </header>
 
   <!--SEZIONE MAIN-->   
@@ -150,14 +117,15 @@
         <div class="container-fluid bg-dark footer">
                  <div class="text-center fs-6 text-white fw-light">
 
-                <p class="text-center fs-4 text-white fw-bolder">ParaMusic Instrument Store</p>
+                <p class="text-center fs-4 text-white fw-bolder">Music Instrument Store</p>
                 Via 3 Settembre, 17 - 47891 Milano (MN) <br>
                 Tel. +39 0549/909670 - Fax +39 0549/909685 <br>
                 E-mail: info@ParaMusic.sm <br>
                 C.O.E. SM 07256 <br>
                 Iscritto al Registro e-commerce al nr. 9999999 del 15/04/2014 <br>
-
+                <a class="nav-link" aria-current="page" href="\Home\Index\">Torna su</a>
             </div>
+            
         </div>
     </footer>
     }
