@@ -158,6 +158,7 @@ namespace ShopStrumentiMusicali.Controllers {
                     instrumentToUpdate.Description = formData.Instrument.Description;
                     instrumentToUpdate.ImageURL = formData.Instrument.ImageURL;
                     instrumentToUpdate.CategoryID = formData.Instrument.CategoryID;
+                    instrumentToUpdate.Quantity = formData.Instrument.Quantity;
                     instrumentToUpdate.Price = formData.Instrument.Price;
 
                     db.SaveChanges();
